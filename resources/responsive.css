@@ -20,12 +20,35 @@ smokey grey: #666666
         grid-template-columns: 1fr;
     }
 
+    .three-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .feature-right {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
     .rounded-corners-lg {
         max-width: 680px;
     }
 
     .horizontal-padding-xlg {
         padding: 0px 80px;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .carousel {
+        grid-template-columns: repeat(auto-fit, 100%);
+    }
+
+    .carousel-item {
+        width: 100%;
+        max-width: 680px;
     }
 }
 

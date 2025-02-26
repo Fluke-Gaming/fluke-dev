@@ -257,6 +257,7 @@ p {
 .feature-right {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    gap: 10px;
 }
 
 .feature-left {
@@ -315,6 +316,10 @@ p {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.carousel {
+    transition: transform 0.3s ease-in-out;
 }
 
 .overlay {
