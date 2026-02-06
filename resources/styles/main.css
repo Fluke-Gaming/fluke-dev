@@ -1,0 +1,42 @@
+:root {
+    --background-color: #0C1013;
+    --primary-color: #192026;
+    --secondary-color: #272E34;
+    --accent-color: #3DAE45;
+    --text-color: whitesmoke;
+}
+
+@font-face {
+    font-family: 'Toxigenesis Rg';
+    src: url('/resources/fonts/ToxigenesisRg-Bold.woff2') format('woff2'),
+        url('/resources/fonts/ToxigenesisRg-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0; /* no space around page edges */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Toxigenesis Rg, Open Sans, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* center container */
+    padding: 1rem;
+}
+
+.item-primary {
+    background-color: var(--primary-color);
+    outline: 1px solid var(--secondary-color);
+    border: .5px solid rgba(0,0,0,0.35);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-accent {
+    color: var(--accent-color);
+}
