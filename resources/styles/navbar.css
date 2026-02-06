@@ -1,7 +1,6 @@
 .navbar {
     min-height: 60px;
-    background-color: black;
-    opacity: 0.8;
+    background-color: rgba(0,0,0,0.8); /* keep visual opacity but not CSS opacity */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,6 +8,7 @@
     width: 100%;
     padding: 0 1rem;
     box-sizing: border-box;
+    position: relative;
 }
 
 .navbar-container {
@@ -18,17 +18,21 @@
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* keep logo + links on one line */
+    position: relative;
 }
 
+/* MOBILE: logo left, hamburger right */
 .logo {
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
-    flex: 0 0 100%;
+    flex: 0 0 33%; /* keep 33% */
+    max-width: 33%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 0.25rem;
 }
 
 .logo-img {
@@ -42,24 +46,85 @@
     align-items: center;
 }
 
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 0.35rem;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* links - mobile: hidden via opacity/visibility so transitions work */
 .navbar a {
     text-transform: uppercase;
     color: var(--text-color);
     text-decoration: none;
-    padding: 0.5rem 0.75rem;
+    padding: 0.75rem 1rem;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 0.9rem;
+    width: 100%;
 }
 
+.navbar a.active {
+    background-color: var(--secondary-color);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 6px;
+}
+
+/* mobile dropdown (hidden by default) */
 .navbar-links {
-    flex: 0 0 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 0.5rem 0;
+    z-index: 10;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
+}
+
+/* when expanded: fully opaque and interactive */
+.navbar-links.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 /* Tablet & up (768px+) */
@@ -68,19 +133,44 @@
         padding: 0;
     }
 
+    .hamburger {
+        display: none;
+    }
+
     .logo {
         font-size: 1.3rem;
         flex: 0 0 33%;
+        max-width: 33%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 0;
     }
 
     .navbar a {
         padding: 0.5rem 1rem;
         font-size: 1rem;
+        width: auto;
+        justify-content: center;
     }
 
     .navbar-links {
         flex: 0 0 66%;
+        max-width: 66%;
         gap: 1rem;
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
+        padding: 0;
+        justify-content: center;
+
+        /* visible by default on tablet+ */
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+        transition: none;
     }
 }
 

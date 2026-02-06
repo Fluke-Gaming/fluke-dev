@@ -13,4 +13,23 @@ fetch('/navbar.html')
         link.classList.add('item-primary');
       }
     });
+
+    // hamburger menu toggle
+    const hamburger = navContainer.querySelector('.hamburger');
+    const navbarLinks = navContainer.querySelector('.navbar-links');
+
+    if (hamburger && navbarLinks) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navbarLinks.classList.toggle('active');
+      });
+
+      // close menu when a link is clicked
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          navbarLinks.classList.remove('active');
+        });
+      });
+    }
   });
