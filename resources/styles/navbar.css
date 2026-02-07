@@ -1,6 +1,8 @@
+/* ===== MOBILE-FIRST BASE STYLES ===== */
+
 .navbar {
     min-height: 60px;
-    background-color: rgba(0,0,0,0.8); /* keep visual opacity but not CSS opacity */
+    background-color: rgba(0,0,0,0.65);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,6 +11,7 @@
     padding: 0 1rem;
     box-sizing: border-box;
     position: relative;
+    z-index: 100;
 }
 
 .navbar-container {
@@ -18,7 +21,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
-    flex-wrap: nowrap; /* keep logo + links on one line */
+    flex-wrap: nowrap;
     position: relative;
 }
 
@@ -33,6 +36,7 @@
     align-items: center;
     justify-content: flex-start;
     padding-left: 0.25rem;
+    opacity: 1;
 }
 
 .logo-img {
@@ -44,6 +48,7 @@
 .logo-text {
     display: flex;
     align-items: center;
+    opacity: 1;
 }
 
 .hamburger {
@@ -89,12 +94,15 @@
     justify-content: flex-start;
     font-size: 0.9rem;
     width: 100%;
+    opacity: 1;
 }
 
 .navbar a.active {
-    background-color: var(--secondary-color);
-    border: 1px solid rgba(255,255,255,0.04);
-    border-radius: 6px;
+    background-color: var(--primary-color);
+    outline: 1px solid var(--secondary-color);
+    border: 0.5px solid rgba(0,0,0,0.35);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* mobile dropdown (hidden by default) */
@@ -127,10 +135,10 @@
     transform: translateY(0);
 }
 
-/* Tablet & up (768px+) */
+/* ===== TABLET (768px+) ===== */
 @media (min-width: 768px) {
     .navbar {
-        padding: 0;
+        padding: 0 1rem;
     }
 
     .hamburger {
@@ -141,14 +149,11 @@
         font-size: 1.3rem;
         flex: 0 0 33%;
         max-width: 33%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
         padding-left: 0;
     }
 
     .navbar a {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem;
         font-size: 1rem;
         width: auto;
         justify-content: center;
@@ -165,7 +170,6 @@
         padding: 0;
         justify-content: center;
 
-        /* visible by default on tablet+ */
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
@@ -174,8 +178,12 @@
     }
 }
 
-/* Desktop (1024px+) */
+/* ===== DESKTOP (1024px+) ===== */
 @media (min-width: 1024px) {
+    .navbar {
+        padding: 0 2rem;
+    }
+
     .logo {
         font-size: 1.5rem;
     }

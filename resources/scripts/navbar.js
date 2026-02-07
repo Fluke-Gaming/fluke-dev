@@ -10,7 +10,7 @@ fetch('/navbar.html')
     const links = navContainer.querySelectorAll('a');
     links.forEach(link => {
       if (link.href === window.location.href) {
-        link.classList.add('item-primary');
+        link.classList.add('active');
       }
     });
 
