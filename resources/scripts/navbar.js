@@ -6,8 +6,8 @@ fetch('/navbar.html')
 
     navContainer.innerHTML = html;
 
-    // active link highlighting
-    const links = navContainer.querySelectorAll('a');
+    // active link highlighting (exclude logo)
+    const links = navContainer.querySelectorAll('a:not(.logo)');
     links.forEach(link => {
       if (link.href === window.location.href) {
         link.classList.add('active');
