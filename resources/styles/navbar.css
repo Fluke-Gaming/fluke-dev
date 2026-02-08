@@ -1,5 +1,9 @@
 /* ===== MOBILE-FIRST BASE STYLES ===== */
 
+#navbar {
+    width: 100%;
+}
+
 .navbar {
     min-height: 60px;
     background-color: rgba(0,0,0,0.8);
@@ -27,9 +31,6 @@
 
 /* MOBILE: logo left, hamburger right */
 .logo {
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
     flex: 0 0 33%; /* keep 33% */
     max-width: 33%;
     display: flex;
@@ -46,6 +47,8 @@
 }
 
 .logo-text {
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
     display: flex;
     align-items: center;
     opacity: 1;
@@ -88,11 +91,11 @@
     text-transform: uppercase;
     color: var(--text-color);
     text-decoration: none;
-    padding: 0.75rem 1rem;
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
     font-size: 0.9rem;
+    padding: 0.25rem;
     width: 100%;
     opacity: 1;
 }
@@ -113,13 +116,12 @@
     justify-content: flex-start;
     gap: 0;
     position: absolute;
-    top: 60px;
-    left: 0;
+    top: 40px;
     right: 0;
     background-color: rgba(0, 0, 0, 0.95);
-    padding: 0.5rem 0;
+    padding: 0.5rem 2rem;
     z-index: 10;
-
+    max-width: 200px;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -141,8 +143,14 @@
         padding: 1.2rem;
     }
 
-    .hamburger {
-        display: none;
+    .navbar a {
+        padding: 0.75rem 0;
+        font-size: 1.2rem;
+        width: auto;
+    }
+
+    .navbar-links {
+        top: 70px;
     }
 
     .logo {
@@ -152,11 +160,30 @@
         padding-left: 0;
     }
 
+    .logo-text {
+        font-size: 1.6rem;
+    }
+
+    .hamburger span {
+        width: 30px;
+        height: 4px;
+    }
+}
+
+/* ===== DESKTOP (1024px+) ===== */
+@media (min-width: 1024px) {
+    .navbar {
+        padding: 0 2rem;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
     .navbar a {
-        padding: 0.5rem;
-        font-size: 1rem;
-        width: auto;
         justify-content: center;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
     }
 
     .navbar-links {
@@ -176,16 +203,10 @@
         transform: none;
         transition: none;
     }
-}
-
-/* ===== DESKTOP (1024px+) ===== */
-@media (min-width: 1024px) {
-    .navbar {
-        padding: 0 2rem;
-    }
 
     .logo {
         font-size: 1.5rem;
+        flex: 0 0 33%;
     }
 
     .logo-img {

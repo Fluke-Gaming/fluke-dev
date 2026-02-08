@@ -31,5 +31,13 @@ fetch('/navbar.html')
           navbarLinks.classList.remove('active');
         });
       });
+
+      // close menu when clicking outside navbar
+      document.addEventListener('click', (e) => {
+        if (!navContainer.contains(e.target)) {
+          hamburger.classList.remove('active');
+          navbarLinks.classList.remove('active');
+        }
+      });
     }
   });
