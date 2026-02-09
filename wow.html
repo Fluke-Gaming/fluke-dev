@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="resources/styles/main.css">
         <link rel="stylesheet" href="resources/styles/navbar.css">
+        <link rel="stylesheet" href="resources/styles/form.css">
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open Sans'>
     </head>
     <body>
@@ -21,7 +22,7 @@
             <h3 class="page-title">World of Warcraft</h3>
             <p>Raiding progression, heroic requirements, and signup sheet.</p>
             
-            <div class="card-container">
+            <div class="card-container card-cols-2-tablet card-cols-3-desktop">
                 <div class="card-item">
                     <h3>Normal Raid</h3>
                     <p>Normal raids are open to all members. At the beginning of each season, we learn the fights on normal and progress through the raid until most players no longer need normal boss loot.</p>
@@ -37,7 +38,7 @@
             </div> <!-- end card-container -->
 
             <h2>Heroic Raiding Requirements</h2>
-            <div class="card-container">
+            <div class="card-container card-cols-2-tablet card-cols-3-desktop">
                 <div class="card-item">
                     <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 122.77">
@@ -104,7 +105,56 @@
                         <p>Uses weapon buffs, food buffs, flasks, etc. Keeps gems and enchants current.</p>
                     </div>
                 </div>
+            </div> <!-- end card-container -->
+
+            <div class="card-container form-container card-cols-2-tablet">
+                <div class="card-item">
+                    <h2>Raid Signup Sheet</h2>
+                    <p>Raiding every <span class="text-accent">Wednesday at 6pm MST</span>. Sign up below to add your name to the roster.</p>
+                    <form class="raid-form" name="RaidSignup" id="raidform">
+                        <input name="Date" type="hidden" id="date-today" value="" />
+                        <input name="Season" type="hidden" value="MNS1" />
+                        
+                        <input name="Name" type="text" placeholder="Name" required />
+                        <div name="main-class">
+                            <input name="MainClass" placeholder="Class" required />
+                            <div name="class-input" class="card-item form-selects"></div>
+                        </div>
+                        <div name="main-role">
+                            <input name="MainRole" placeholder="Raid Spec" required />
+                            <div name="role-input" class="card-item form-selects"></div>
+                        </div>
+                        <div name="main-offspec">
+                            <input name="MainOffspec" placeholder="Off Spec" />
+                            <div name="role-input" class="card-item form-selects"></div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="card-container">
+                    <h2>Guides & Resources</h2>
+                    <div class="card-container card-cols-2-tablet">
+                        <div class="card-item">
+                            <h3>Boss Fights</h3>
+                            <p>Review boss fight mechanics and strategies to prepare for raid encounters.</p>
+                        </div>
+                        <div class="card-item">
+                            <h3>Class Guides</h3>
+                            <p>Check out class guides from top raiders to optimize your performance.</p>
+                        </div>
+                        <div class="card-item">
+                            <h3>Boss Fights</h3>
+                            <p>Review boss fight mechanics and strategies to prepare for raid encounters.</p>
+                        </div>
+                        <div class="card-item">
+                            <h3>Class Guides</h3>
+                            <p>Check out class guides from top raiders to optimize your performance.</p>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
+
         </div> <!-- end container -->
 
         <!--[if lt IE 7]>
@@ -112,5 +162,6 @@
         <![endif]-->
         
         <script src="/resources/scripts/navbar.js"></script>
+        <script src="/resources/scripts/wow.js"></script>
     </body>
 </html>

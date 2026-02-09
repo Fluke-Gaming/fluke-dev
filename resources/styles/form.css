@@ -1,0 +1,66 @@
+form {
+    display: grid;
+    gap: .5rem;
+    padding: 1rem 0;
+}
+
+form div {
+    position: relative;
+}
+
+input, select {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: JUSTSans Rg, open sans, sans-serif;
+    font-size: 0.9rem;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+option {
+    color: var(--text-color);
+}
+
+.form-container {
+    margin-top: 1.75rem;
+    align-items: start;
+}
+
+.form-container > .card-container > h2 {
+    margin: 0;
+}
+
+.raid-form {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.form-selects {
+    position: absolute;
+    visibility: hidden;
+    background-color: var(--background-color);
+    border-radius: 4px;
+    left: 0; right: 0; margin: auto;
+    z-index: 10;
+    transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
+}
+
+.form-selects.visible {
+    visibility: visible;
+    /* opacity: 1;
+    transform: translateY(0); */
+}
+
+.form-selects p {
+    padding: 0.2rem 0.5rem;
+    font-size: .9rem;
+}

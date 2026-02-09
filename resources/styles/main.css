@@ -148,6 +148,15 @@ h3 {
     fill: var(--accent-color);
 }
 
+.card-item h2 {
+    font-size: 1.25rem;
+    margin: 0.75rem 0;
+}
+
+.card-item h2 + p{
+    text-align: center;
+}
+
 .card-item h3 {
     margin: 0 0 0.5rem 0;
     opacity: 0.9;
@@ -159,6 +168,10 @@ h3 {
     font-size: 0.8rem;
     opacity: 0.85;
     line-height: 1.5;
+}
+
+.placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .text-accent {
@@ -250,11 +263,11 @@ h3 {
         font-size: 1.4rem;
     }
 
-    .card-container {
+    .card-cols-2-tablet {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .card-container > :last-child:nth-child(odd) {
+    .card-cols-2-tablet > :last-child:nth-child(odd) {
         grid-column: 1 / -1;
         width: calc(50% - 0.5rem);
         margin: 0 auto;
@@ -281,11 +294,12 @@ h3 {
         background-size: cover; /* full cover on desktop */
     }
 
-    .card-container {
+    .card-cols-3-desktop {
         gap: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .card-container > :last-child:nth-child(odd) {
+    .card-cols-3-desktop > :last-child:nth-child(odd) {
         grid-column: initial;
         width: initial;
         margin: initial;
@@ -298,10 +312,6 @@ h3 {
     .hero-content p {
         font-size: 1.5rem;
         padding: 2rem 0;
-    }
-
-    .card-container {
-        grid-template-columns: repeat(3, 1fr);
     }
 }
 
