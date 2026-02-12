@@ -116,17 +116,20 @@
                         <input name="Season" type="hidden" value="MNS1" />
                         
                         <input name="Name" type="text" placeholder="Name" required />
-                        <div name="main-class">
-                            <input name="MainClass" placeholder="Class" readonly required />
-                            <div name="class-input" class="card-item form-selects"></div>
+                        <div data-name="main-class">
+                            <input name="MainClass" type="hidden" required />
+                            <div class="form-input" tabindex="0">Class</div>
+                            <div class="card-item form-selects class-options"></div>
                         </div>
-                        <div name="main-role">
-                            <input name="MainRole" placeholder="Raid Spec" readonly required />
-                            <div name="role-input" class="card-item form-selects"></div>
+                        <div data-name="main-role">
+                            <input name="MainRole" type="hidden" required />
+                            <div class="form-input" tabindex="0">Main Spec</div>
+                            <div class="card-item form-selects role-options"></div>
                         </div>
-                        <div name="main-offspec">
-                            <input name="MainOffspec" placeholder="Off Spec" readonly />
-                            <div name="role-input" class="card-item form-selects"></div>
+                        <div data-name="main-offspec">
+                            <input name="MainOffspec" type="hidden" readonly />
+                            <div class="form-input" tabindex="0">Offspec</div>
+                            <div class="card-item form-selects role-options"></div>
                         </div>
                     </form>
                 </div>

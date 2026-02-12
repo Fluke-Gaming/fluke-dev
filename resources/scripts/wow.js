@@ -2,6 +2,7 @@
 
 function populateDropdown(containerSelector, options) {
   const containers = document.querySelectorAll(containerSelector);
+  if (containers.length === 0) return;
   
   containers.forEach(container => {
     container.innerHTML = '';
@@ -39,25 +40,26 @@ const roleOptions = [
   { value: 'tank', text: 'Tank' }
 ];
 
-populateDropdown('div[name="class-input"]', classOptions);
-populateDropdown('div[name="role-input"]', roleOptions);
+populateDropdown('.class-options', classOptions);
+populateDropdown('.role-options', roleOptions);
 
 // ADD EVENT LISTENERS TO ACTIVATE THE INPUT SELECTORS
-const inputSelects = [ 'div[name="main-class"]', 'div[name="main-role"]', 'div[name="main-offspec"]' ];
+const inputSelects = [ 'div[data-name="main-class"]', 'div[data-name="main-role"]', 'div[data-name="main-offspec"]' ];
 
 inputSelects.forEach(selector => {
   const inputContainer = document.querySelector(selector);
   if (!inputContainer) return;
 
   const input = inputContainer.querySelector('input');
+  const display = inputContainer.querySelector('.form-input');
   const dropdown = inputContainer.querySelector('.form-selects');
 
-  if (input && dropdown) {
-    input.addEventListener('focus', () => {
+  if (input && display && dropdown) {
+    display.addEventListener('focus', () => {
       dropdown.style.visibility = 'visible';
     });
 
-    input.addEventListener('blur', () => {
+    display.addEventListener('blur', () => {
       setTimeout(() => {
         dropdown.style.visibility = 'hidden';
       }, 200);
@@ -65,7 +67,8 @@ inputSelects.forEach(selector => {
 
     dropdown.addEventListener('click', (e) => {
       if (e.target.classList.contains('select-item')) {
-        input.value = e.target.textContent;
+        display.textContent = e.target.textContent;
+        input.value = e.target.dataset.value;
         dropdown.style.visibility = 'hidden';
       }
     });

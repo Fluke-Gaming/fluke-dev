@@ -8,7 +8,7 @@ form div {
     position: relative;
 }
 
-input, select {
+input, select, .form-input {
     padding: 0.5rem 1rem;
     border-radius: 4px;
     border: 1px solid var(--secondary-color);
@@ -21,6 +21,10 @@ input, select {
     max-width: 100%;
     position: relative;
     transition: all 0.2s ease;
+}
+
+.form-input {
+    cursor: default;
 }
 
 input::placeholder {
@@ -63,4 +67,5 @@ option {
 .form-selects p {
     padding: 0.2rem 0.5rem;
     font-size: .9rem;
+    cursor: default;
 }
