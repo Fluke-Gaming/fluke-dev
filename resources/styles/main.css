@@ -122,6 +122,15 @@ h4 {
     margin: 0 0 1.5rem;
 }
 
+.card-outline {
+    /* background-color: var(--primary-color); */
+    outline: 1px solid var(--secondary-color);
+    border: 0.5px solid rgba(0,0,0,0.35);
+    padding: 0 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .card-cols-2-mobile {
     grid-template-columns: repeat(2, 1fr);
     padding: .5rem 0;
@@ -172,6 +181,7 @@ h4 {
 
 .card-item h2 + p{
     text-align: center;
+    padding: 0 2rem;
 }
 
 .card-item h3 {

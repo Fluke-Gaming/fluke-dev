@@ -23,16 +23,16 @@ input, select, .form-input {
     transition: all 0.2s ease;
 }
 
-.form-input {
-    cursor: default;
-}
-
 input::placeholder {
     color: rgba(255, 255, 255, 0.5);
 }
 
 option {
     color: var(--text-color);
+}
+
+.placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .form-container {
@@ -46,6 +46,20 @@ option {
 
 .raid-form {
     grid-template-columns: repeat(2, 1fr);
+}
+
+.form-input {
+    cursor: default;
+    position: relative;
+    padding-right: 20px;
+}
+
+.clear-btn {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
 
 .form-selects {

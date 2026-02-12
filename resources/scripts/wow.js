@@ -43,41 +43,99 @@ const roleOptions = [
 populateDropdown('.class-options', classOptions);
 populateDropdown('.role-options', roleOptions);
 
+
 // ADD EVENT LISTENERS TO ACTIVATE THE INPUT SELECTORS
-const inputSelects = [ 'div[data-name="main-class"]', 'div[data-name="main-role"]', 'div[data-name="main-offspec"]' ];
 
-inputSelects.forEach(selector => {
-  const inputContainer = document.querySelector(selector);
-  if (!inputContainer) return;
+const inputContainers = document.querySelectorAll('div.dropdown-toggle');
 
-  const input = inputContainer.querySelector('input');
-  const display = inputContainer.querySelector('.form-input');
-  const dropdown = inputContainer.querySelector('.form-selects');
+inputContainers.forEach(container => {
+  if (!container) return;
 
-  if (input && display && dropdown) {
-    display.addEventListener('focus', () => {
-      dropdown.style.visibility = 'visible';
-    });
+  const input = container.querySelector('input');
+  const display = container.querySelector('.form-input');
+  const dropdown = container.querySelector('.form-selects');
 
-    display.addEventListener('blur', () => {
+  if (!input || !display || !dropdown) return;
+
+  let hadFocusBeforeClick = false;
+  const placeholderText = display.dataset.name || display.textContent;
+
+  // ---------- Helpers ----------
+  const showDropdown = () => dropdown.style.visibility = 'visible';
+  const hideDropdown = () => dropdown.style.visibility = 'hidden';
+
+  const createClearBtn = () => {
+    if (!display.querySelector('.clear-btn')) {
+      const clear = document.createElement('span');
+      clear.textContent = '×';
+      clear.className = 'clear-btn';
+      display.appendChild(clear);
+    }
+  };
+
+  const removeClearBtn = () => {
+    const btn = display.querySelector('.clear-btn');
+    if (btn) btn.remove();
+  };
+
+  const resetDisplay = () => {
+    display.textContent = placeholderText;
+    display.classList.add('placeholder');
+    input.value = '';
+    removeClearBtn();
+  };
+
+  // ---------- Track focus before click ----------
+  display.addEventListener('mousedown', () => {
+    hadFocusBeforeClick = (document.activeElement === display);
+  });
+
+  // ---------- Focus ----------
+  display.addEventListener('focus', () => {
+    showDropdown();
+  });
+
+  // ---------- Blur ----------
+  display.addEventListener('blur', () => {
+    setTimeout(hideDropdown, 200); // allow dropdown clicks before closing
+  });
+
+  // ---------- Click on display ----------
+  display.addEventListener('click', (e) => {
+    const clear = e.target.closest('.clear-btn');
+    if (clear) {
+      // clear button clicked — reset display, do not toggle
+      e.stopPropagation();
+      resetDisplay();
+      return;
+    }
+
+    e.stopPropagation();
+
+    // only toggle if the display was already focused
+    if (hadFocusBeforeClick) {
       setTimeout(() => {
-        dropdown.style.visibility = 'hidden';
-      }, 200);
-    });
+        const isOpen = dropdown.style.visibility === 'visible';
+        dropdown.style.visibility = isOpen ? 'hidden' : 'visible';
+      }, 100); // delay fixes first-click race with focus
+    }
+  });
 
-    dropdown.addEventListener('click', (e) => {
-      if (e.target.classList.contains('select-item')) {
-        display.textContent = e.target.textContent;
-        input.value = e.target.dataset.value;
-        dropdown.style.visibility = 'hidden';
-      }
-    });
+  // ---------- Click on dropdown items ----------
+  dropdown.addEventListener('click', (e) => {
+    if (e.target.classList.contains('select-item')) {
+      display.textContent = e.target.textContent;
+      input.value = e.target.dataset.value;
+      display.classList.remove('placeholder');
+      createClearBtn();
+      display.blur(); // close dropdown
+    }
+  });
 
-    // Optional: hide dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!inputContainer.contains(e.target)) {
-        dropdown.style.visibility = 'hidden';
-      }
-    });
-  }
+  // ---------- Click outside ----------
+  document.addEventListener('click', (e) => {
+    if (!container.contains(e.target)) {
+      hideDropdown();
+    }
+  });
 });

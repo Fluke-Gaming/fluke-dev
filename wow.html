@@ -116,19 +116,36 @@
                         <input name="Season" type="hidden" value="MNS1" />
                         
                         <input name="Name" type="text" placeholder="Name" required />
-                        <div data-name="main-class">
+                        <div class="dropdown-toggle">
                             <input name="MainClass" type="hidden" required />
-                            <div class="form-input" tabindex="0">Class</div>
+                            <div class="form-input placeholder" data-name="Class" tabindex="0">Class</div>
                             <div class="card-item form-selects class-options"></div>
                         </div>
-                        <div data-name="main-role">
+                        <div class="dropdown-toggle">
                             <input name="MainRole" type="hidden" required />
-                            <div class="form-input" tabindex="0">Main Spec</div>
+                            <div class="form-input placeholder" data-name="Main Spec" tabindex="0">Main Spec</div>
                             <div class="card-item form-selects role-options"></div>
                         </div>
-                        <div data-name="main-offspec">
+                        <div class="dropdown-toggle">
                             <input name="MainOffspec" type="hidden" readonly />
-                            <div class="form-input" tabindex="0">Offspec</div>
+                            <div class="form-input placeholder" data-name="Offspec" tabindex="0">Offspec</div>
+                            <div class="card-item form-selects role-options"></div>
+                        </div>
+
+                        <p>[ ] I have a raid-ready alt.</p>
+                        <div class="dropdown-toggle">
+                            <input name="AltClass" type="hidden" required />
+                            <div class="form-input placeholder" data-name="Class (Alt)" tabindex="0">Class (Alt)</div>
+                            <div class="card-item form-selects class-options"></div>
+                        </div>
+                        <div class="dropdown-toggle">
+                            <input name="AltRole" type="hidden" required />
+                            <div class="form-input placeholder" data-name="Main Spec (Alt)" tabindex="0">Main Spec (Alt)</div>
+                            <div class="card-item form-selects role-options"></div>
+                        </div>
+                        <div class="dropdown-toggle">
+                            <input name="AltOffspec" type="hidden" readonly />
+                            <div class="form-input placeholder" data-name="Offspec (Alt)" tabindex="0">Offspec (Alt)</div>
                             <div class="card-item form-selects role-options"></div>
                         </div>
                     </form>
