@@ -108,7 +108,7 @@
             </div> <!-- end card-container -->
 
             <div class="card-container form-container card-cols-2-tablet">
-                <div class="card-item">
+                <div class="card-item center">
                     <h2>Raid Signup Sheet</h2>
                     <p>Raiding every <span class="text-accent">Wednesday at 6pm MST</span>. Sign up below to add your name to the roster.</p>
                     <form class="raid-form" name="RaidSignup" id="raidform">
@@ -132,23 +132,27 @@
                             <div class="card-item form-selects role-options"></div>
                         </div>
 
-                        <p>[ ] I have a raid-ready alt.</p>
-                        <div class="dropdown-toggle">
+                        <div class="checkbox alt-checkbox">
+                            <input type="checkbox" name="RaidAlt" id="raid-alt" />
+                            <label for="raid-alt" class="placeholder">I have a raid-ready alt.</label>
+                        </div>
+                        <div class="dropdown-toggle alt-checkbox disabled">
                             <input name="AltClass" type="hidden" required />
                             <div class="form-input placeholder" data-name="Class (Alt)" tabindex="0">Class (Alt)</div>
                             <div class="card-item form-selects class-options"></div>
                         </div>
-                        <div class="dropdown-toggle">
+                        <div class="dropdown-toggle alt-checkbox disabled">
                             <input name="AltRole" type="hidden" required />
                             <div class="form-input placeholder" data-name="Main Spec (Alt)" tabindex="0">Main Spec (Alt)</div>
                             <div class="card-item form-selects role-options"></div>
                         </div>
-                        <div class="dropdown-toggle">
+                        <div class="dropdown-toggle alt-checkbox disabled">
                             <input name="AltOffspec" type="hidden" readonly />
                             <div class="form-input placeholder" data-name="Offspec (Alt)" tabindex="0">Offspec (Alt)</div>
                             <div class="card-item form-selects role-options"></div>
                         </div>
                     </form>
+                    <a href="" class="btn btn-form">Submit</a>
                 </div>
                 
                 <div class="">

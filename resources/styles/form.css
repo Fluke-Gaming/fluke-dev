@@ -31,8 +31,19 @@ option {
     color: var(--text-color);
 }
 
+label {
+    font-family: JUSTSans Rg, open sans, sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
 .placeholder {
     color: rgba(255, 255, 255, 0.5);
+}
+
+.disabled {
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .form-container {
@@ -46,6 +57,41 @@ option {
 
 .raid-form {
     grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox input {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--secondary-color);
+  background-color: var(--background-color);
+  border-radius: 3px;
+
+  padding: 0;
+  display: inline-grid;
+  place-content: center;
+}
+
+.checkbox input::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  transform: scale(0);
+  transition: transform 120ms ease-in-out;
+  background-color: var(--secondary-color);
+}
+
+.checkbox input:checked::before {
+  transform: scale(1);
 }
 
 .form-input {
@@ -74,12 +120,22 @@ option {
 
 .form-selects.visible {
     visibility: visible;
-    /* opacity: 1;
-    transform: translateY(0); */
 }
 
 .form-selects p {
     padding: 0.2rem 0.5rem;
     font-size: .9rem;
     cursor: default;
+}
+
+.btn-form {
+    padding: .5rem 1.5rem;
+    background-color: var(--accent-color);
+    color: #000;
+    border: 2px solid var(--accent-color);
+    transition: transform 0.2s ease;
+}
+
+.btn-form:hover {
+    transform: scale(1.05);
 }

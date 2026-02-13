@@ -139,3 +139,37 @@ inputContainers.forEach(container => {
     }
   });
 });
+
+
+// remove disabled class if alt checkbox is checked
+const checkboxContainer = document.querySelector('div.alt-checkbox');
+if (checkboxContainer) {
+  const checkbox = checkboxContainer.querySelector('input[type="checkbox"]');
+  checkbox.addEventListener('change', () => {
+    const altLabel = checkboxContainer.querySelector('label');
+    if (checkbox.checked) {
+      altLabel.classList.remove('placeholder');
+    } else {
+      altLabel.classList.add('placeholder');
+    }
+
+    const altContainers = document.querySelectorAll('.alt-checkbox');
+    altContainers.forEach(alt => {
+      if (checkbox.checked) {
+        alt.classList.remove('disabled');
+      } else {
+        alt.classList.add('disabled');
+        // also reset any selected values in the alt dropdowns
+        const altInputs = alt.querySelectorAll('input[type="hidden"]');
+        altInputs.forEach(input => input.value = '');
+        const altDisplays = alt.querySelectorAll('.form-input');
+        altDisplays.forEach(display => {
+          display.textContent = display.dataset.name || display.textContent;
+          display.classList.add('placeholder');
+          const clearBtn = display.querySelector('.clear-btn');
+          if (clearBtn) clearBtn.remove();
+        });
+      }
+    });
+  });
+}
