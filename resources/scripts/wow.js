@@ -179,7 +179,7 @@ if (checkboxContainer) {
 // SUBMIT FORM TO GOOGLE SCRIPTS
 
 const form = document.getElementById('raidform');
-const formAction = 'https://script.google.com/macros/s/AKfycbx9n8XoQeHjKqj2kLh3Zs1v0aXGz5b7c8d9e0f1g2h3i4j5k6l7m8n9o0p1q2r3s4t5u6v7w8x9y0z/exec';
+const formAction = 'https://flukegaming.azurewebsites.net/';
 const submitButton = document.getElementById('submit-btn');
 const requiredFields = form.querySelectorAll('input[required]');
 
@@ -214,19 +214,18 @@ if (form && submitButton) {
       }
     });
     if (missingFields.length > 0) {
-      // highlight missing fields and show error toast
+      // highlight missing fields
       missingFields.forEach(field => {
-        // const input = form.querySelector(`input[placeholder="${field}"]`);
         const input = form.querySelector(`input[placeholder="${field}"]:not([type="hidden"]), .form-input[data-name="${field}"]`);
         if (input) {
           input.classList.add('missing-input');
           setTimeout(() => input.classList.remove('missing-input'), 3000);
         }
       });
+      // show error toast & exit submit
       showToast(`Please fill missing fields: ${missingFields.join(', ')}`, false);
       return;
     }
-
 
     fetch(formAction, {
       method: 'POST',
