@@ -179,7 +179,7 @@ if (checkboxContainer) {
 // SUBMIT FORM TO GOOGLE SCRIPTS
 
 const form = document.getElementById('raidform');
-const formAction = 'https://form-handler.flukegaming57.workers.dev';
+const formAction = 'https://raid-form.flukegaming57.workers.dev';
 const submitButton = document.getElementById('submit-btn');
 const requiredFields = form.querySelectorAll('input[required]');
 
