@@ -201,10 +201,10 @@ if (form && submitButton) {
     toasts.forEach(t => t.remove());
 
     const formData = new FormData(form);
-    console.log('Form data to submit:');
-    for (let pair of formData.entries()) {
-      console.log(`${pair[0]}: ${pair[1]}`);
-    }
+    // console.log('Form data to submit:');
+    // for (let pair of formData.entries()) {
+    //   console.log(`${pair[0]}: ${pair[1]}`);
+    // }
 
     // collect any empty required fields
     const missingFields = [];
@@ -229,7 +229,8 @@ if (form && submitButton) {
 
     fetch(formAction, {
       method: 'POST',
-      body: formData
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
     })
     .then(response => {
       console.log('Raw response:', response); // Debugging output
@@ -253,5 +254,4 @@ if (form && submitButton) {
       showToast('Signup failed. Please check your connection and try again.', false);
     });
   });
-  console.log('Form submit listener added');
 }
