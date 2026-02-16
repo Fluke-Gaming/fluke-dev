@@ -225,7 +225,8 @@ if (form && submitButton) {
       return;
     }
 
-    submitButton.disabled = true;
+    form.classList.add('disabled');
+    submitButton.classList.add('disabled');
     submitButton.textContent = 'Submitting...';
 
     fetch(formAction, {
@@ -256,7 +257,8 @@ if (form && submitButton) {
       showToast('Network error. Please try again.', false);
     })
     .finally(() => {
-      submitButton.disabled = false;
+      form.classList.remove('disabled');
+      submitButton.classList.remove('disabled');
       submitButton.textContent = originalText;
     });
   });
