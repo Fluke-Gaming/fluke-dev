@@ -222,6 +222,7 @@ h4 {
 
 .concise {
     display: inherit;
+    text-align: center;
 }
 
 .signup-sheet {
