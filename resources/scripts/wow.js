@@ -181,6 +181,7 @@ if (checkboxContainer) {
 const form = document.getElementById('raidform');
 const formAction = 'https://raid-form.flukegaming57.workers.dev';
 const submitButton = document.getElementById('submit-btn');
+const originalText = submitButton.textContent;
 const requiredFields = form.querySelectorAll('input[required]');
 
 function showToast(message, isSuccess = true) {
@@ -200,7 +201,8 @@ if (form && submitButton) {
     const toasts = document.querySelectorAll('.toast');
     toasts.forEach(t => t.remove());
 
-    const formData = new FormData(form);
+    const fd = new FormData(form);
+    const formData = Object.fromEntries(fd.entries());
 
     // collect any empty required fields
     const missingFields = [];
@@ -219,9 +221,12 @@ if (form && submitButton) {
         }
       });
       // show error toast & exit submit
-      showToast(`Please fill missing fields: ${missingFields.join(', ')}`, false);
+      showToast(`Not submitted. Please complete required fields: ${missingFields.join(', ')}`, false);
       return;
     }
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Submitting...';
 
     fetch(formAction, {
       method: 'POST',
@@ -248,7 +253,11 @@ if (form && submitButton) {
       }
     })
     .catch(() => {
-      showToast('Signup failed. Please check your connection and try again.', false);
+      showToast('Network error. Please try again.', false);
+    })
+    .finally(() => {
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
     });
   });
 }
