@@ -8,6 +8,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Fluke Gaming</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="resources/images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
+        <link rel="manifest" href="resources/images/favicon/site.webmanifest">
         <meta name="description" content="Fluke Gaming is a laid-back community of semi-casual gamers who raid together in WoW and host private Steam servers. We value respect, inclusivity, and friendship. Find us on Discord, Twitch, and more!">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="resources/styles/main.css">
@@ -111,23 +115,22 @@
                 <div class="card-item center">
                     <h2>Raid Signup Sheet</h2>
                     <p>Raiding every <span class="text-accent">Wednesday at 6pm MST</span>. Sign up below to add your name to the roster.</p>
-                    <form class="raid-form" name="RaidSignup" id="raidform">
-                        <input name="Date" type="hidden" id="date-today" value="" />
+                    <form class="raid-form" name="RaidSignup" id="raidform" action="https://script.google.com/macros/s/AKfycbx9n8XoQeHjKqj2kLh3Zs1v0aXGz5b7c8d9e0f1g2h3i4j5k6l7m8n9o0p1q2r3s4t5u6v7w8x9y0z/exec">
                         <input name="Season" type="hidden" value="MNS1" />
                         
                         <input name="Name" type="text" placeholder="Name" required />
                         <div class="dropdown-toggle">
-                            <input name="MainClass" type="hidden" required />
+                            <input name="MainClass" type="hidden" placeholder="Class" required />
                             <div class="form-input placeholder" data-name="Class" tabindex="0">Class</div>
                             <div class="card-item form-selects class-options"></div>
                         </div>
                         <div class="dropdown-toggle">
-                            <input name="MainRole" type="hidden" required />
+                            <input name="MainRole" type="hidden" placeholder="Main Spec" required />
                             <div class="form-input placeholder" data-name="Main Spec" tabindex="0">Main Spec</div>
                             <div class="card-item form-selects role-options"></div>
                         </div>
                         <div class="dropdown-toggle">
-                            <input name="MainOffspec" type="hidden" readonly />
+                            <input name="MainOffspec" type="hidden" />
                             <div class="form-input placeholder" data-name="Offspec" tabindex="0">Offspec</div>
                             <div class="card-item form-selects role-options"></div>
                         </div>
@@ -137,43 +140,56 @@
                             <label for="raid-alt" class="placeholder">I have a raid-ready alt.</label>
                         </div>
                         <div class="dropdown-toggle alt-checkbox disabled">
-                            <input name="AltClass" type="hidden" required />
+                            <input name="AltClass" type="hidden" />
                             <div class="form-input placeholder" data-name="Class (Alt)" tabindex="0">Class (Alt)</div>
                             <div class="card-item form-selects class-options"></div>
                         </div>
                         <div class="dropdown-toggle alt-checkbox disabled">
-                            <input name="AltRole" type="hidden" required />
+                            <input name="AltRole" type="hidden" />
                             <div class="form-input placeholder" data-name="Main Spec (Alt)" tabindex="0">Main Spec (Alt)</div>
                             <div class="card-item form-selects role-options"></div>
                         </div>
                         <div class="dropdown-toggle alt-checkbox disabled">
-                            <input name="AltOffspec" type="hidden" readonly />
+                            <input name="AltOffspec" type="hidden" />
                             <div class="form-input placeholder" data-name="Offspec (Alt)" tabindex="0">Offspec (Alt)</div>
                             <div class="card-item form-selects role-options"></div>
                         </div>
+                        <input name="Comments" class="long-text" type="text" placeholder="Comments (optional)" />
                     </form>
-                    <a href="" class="btn btn-form">Submit</a>
+                    <a id="submit-btn" class="btn btn-form">Submit</a>
                 </div>
                 
                 <div class="">
                     <h2>Guides & Resources</h2>
                     <div class="card-container card-cols-2-mobile">
-                        <div class="card-item">
-                            <h4>Boss Guides</h4>
-                            <p>Review boss fight mechanics and strategies to prepare for raid encounters.</p>
-                        </div>
-                        <div class="card-item">
-                            <h4>Class Guides</h4>
-                            <p>Check out class guides from top raiders to optimize your performance.</p>
-                        </div>
-                        <div class="card-item">
-                            <h4>Dungeon Guides</h4>
-                            <p>Review dungeon mechanics and strategies to prepare for your adventures.</p>
-                        </div>
-                        <div class="card-item">
-                            <h4>Mythic+ Guides</h4>
-                            <p>Check out Mythic+ guides from top raiders to optimize your performance.</p>
-                        </div>
+                        <a href="https://www.mythictrap.com/en#bossStrategies" target="_blank">
+                            <div class="card-item">
+                                <h4 class="text-accent">Boss Guides</h4>
+                                <p class="verbose">Mythic Trap offers concise boss strategies with clear visuals for every encounter.</p>
+                                <p class="concise">Mythic Trap</p>
+                            </div>
+                        </a>
+                        <a href="https://www.icy-veins.com/wow/class-guides" target="_blank">
+                            <div class="card-item">
+                                <h4 class="text-accent">Class Guides</h4>
+                                <p class="verbose">Icy Veins provides comprehensive class guides covering talents, rotations, and gear.</p>
+                                <p class="concise">Icy Veins</p>
+                            </div>
+                        </a>
+                        <a href="https://www.wowhead.com/guides/dungeons" target="_blank">
+                            <div class="card-item">
+                                <h4 class="text-accent">Dungeon Guides</h4>
+                                <p class="verbose">Wowhead features detailed dungeon guides with pull maps, interrupts, and video walkthroughs.</p>
+                                <p class="concise">Wowhead</p>
+                            </div>
+                        </a>
+                        <a href="https://www.method.gg/guides#mythic-plus-guides" target="_blank">
+                            <div class="card-item">
+                                <h4 class="text-accent">Mythic+ Guides</h4>
+                                <p class="verbose">Method delivers precise Mythic+ guides covering affixes, timers, and optimized routes.</p>
+                                <p class="concise">Method</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 

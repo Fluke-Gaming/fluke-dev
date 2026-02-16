@@ -141,7 +141,8 @@ inputContainers.forEach(container => {
 });
 
 
-// remove disabled class if alt checkbox is checked
+// ADD EVENT LISTENER TO ALT CHECKBOX TO DISABLE/ENABLE ALT DROPDOWNS
+
 const checkboxContainer = document.querySelector('div.alt-checkbox');
 if (checkboxContainer) {
   const checkbox = checkboxContainer.querySelector('input[type="checkbox"]');
@@ -170,6 +171,87 @@ if (checkboxContainer) {
           if (clearBtn) clearBtn.remove();
         });
       }
+    });
+  });
+}
+
+
+// SUBMIT FORM TO GOOGLE SCRIPTS
+
+const form = document.getElementById('raidform');
+const formAction = 'https://raid-form.flukegaming57.workers.dev';
+const submitButton = document.getElementById('submit-btn');
+const requiredFields = form.querySelectorAll('input[required]');
+
+function showToast(message, isSuccess = true) {
+  const toast = document.createElement('div');
+  toast.className = `toast ${isSuccess ? 'success' : 'error'}`;
+  toast.textContent = message;
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+if (form && submitButton) {
+  submitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    const toasts = document.querySelectorAll('.toast');
+    toasts.forEach(t => t.remove());
+
+    const formData = new FormData(form);
+    // console.log('Form data to submit:');
+    // for (let pair of formData.entries()) {
+    //   console.log(`${pair[0]}: ${pair[1]}`);
+    // }
+
+    // collect any empty required fields
+    const missingFields = [];
+    requiredFields.forEach(field => {
+      if (!field.value.trim()) {
+        missingFields.push(field.placeholder);
+      }
+    });
+    if (missingFields.length > 0) {
+      // highlight missing fields
+      missingFields.forEach(field => {
+        const input = form.querySelector(`input[placeholder="${field}"]:not([type="hidden"]), .form-input[data-name="${field}"]`);
+        if (input) {
+          input.classList.add('missing-input');
+          setTimeout(() => input.classList.remove('missing-input'), 3000);
+        }
+      });
+      // show error toast & exit submit
+      showToast(`Please fill missing fields: ${missingFields.join(', ')}`, false);
+      return;
+    }
+
+    fetch(formAction, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      console.log('Raw response:', response); // Debugging output
+      if (response.ok) {
+        showToast('Signup successful!', true);
+
+        form.reset();
+        // also reset all dropdown displays
+        const displays = form.querySelectorAll('.form-input');
+        displays.forEach(display => {
+          display.textContent = display.dataset.name || display.textContent;
+          display.classList.add('placeholder');
+          const clearBtn = display.querySelector('.clear-btn');
+          if (clearBtn) clearBtn.remove();
+        });
+      } else {
+        showToast('Signup failed. Please try again.', false);
+      }
+    })
+    .catch(() => {
+      showToast('Signup failed. Please check your connection and try again.', false);
     });
   });
 }

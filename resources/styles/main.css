@@ -35,6 +35,12 @@ body {
     font-family: Toxigenesis Rg, Open Sans, sans-serif;
 }
 
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    /* transition: color 0.2s ease; */
+}
+
 p {
     font-family: JUSTSans Rg, open sans, sans-serif;
 }
@@ -141,7 +147,7 @@ h4 {
 }
 
 .card-cols-2-mobile p {
-    display: none;
+    text-align: center;
 }
 
 .card-item {
@@ -185,6 +191,8 @@ h4 {
 
 .card-item h2 + p {
     padding: 0 2rem;
+    margin: 0 auto;
+    max-width: 420px;
 }
 
 .card-item h3 {
@@ -208,6 +216,14 @@ h4 {
     color: var(--accent-color);
 }
 
+.verbose {
+    display: none;
+}
+
+.concise {
+    display: inherit;
+}
+
 .hero-content {
     max-width: 1200px;
     padding: 1rem;
@@ -226,7 +242,7 @@ h4 {
     font-size: 1.2rem;
     line-height: 1.8;
     padding: 2rem;
-    max-width: 720px;
+    max-width: 680px;
     margin: 0 auto;
 }
 
@@ -242,6 +258,7 @@ h4 {
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     border-radius: 6px;
+    font-family: 'Toxigenesis Rg';
     font-size: 0.95rem;
     text-transform: uppercase;
     font-weight: bold;
@@ -318,6 +335,14 @@ h4 {
     .btn {
         padding: 1rem 2rem;
         font-size: 1rem;
+    }
+
+    .verbose {
+        display: inherit;
+    }
+
+    .concise {
+        display: none;
     }
 }
 
