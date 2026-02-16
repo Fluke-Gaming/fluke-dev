@@ -176,7 +176,7 @@ if (checkboxContainer) {
 }
 
 
-// SUBMIT FORM TO GOOGLE SCRIPTS
+// SUBMIT FORM TO CLOUDFLARE WORKER
 
 const form = document.getElementById('raidform');
 const formAction = 'https://raid-form.flukegaming57.workers.dev';
@@ -201,10 +201,6 @@ if (form && submitButton) {
     toasts.forEach(t => t.remove());
 
     const formData = new FormData(form);
-    // console.log('Form data to submit:');
-    // for (let pair of formData.entries()) {
-    //   console.log(`${pair[0]}: ${pair[1]}`);
-    // }
 
     // collect any empty required fields
     const missingFields = [];
@@ -232,9 +228,10 @@ if (form && submitButton) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     })
-    .then(response => {
-      console.log('Raw response:', response); // Debugging output
-      if (response.ok) {
+    .then(response => response.json())
+    .then(json => {
+      console.log('Worker response:', json); // Debugging output
+      if (json.appendStatus && json.appendStatus.startsWith('success')) {
         showToast('Signup successful!', true);
 
         form.reset();
