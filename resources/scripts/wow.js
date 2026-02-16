@@ -153,7 +153,7 @@ if (checkboxContainer) {
       altLabel.classList.add('placeholder');
     }
 
-    const altContainers = document.querySelectorAll('.alt-checkbox');
+    const altContainers = document.querySelectorAll('.alt-checkbox.dropdown-toggle');
     altContainers.forEach(alt => {
       if (checkbox.checked) {
         alt.classList.remove('disabled');
