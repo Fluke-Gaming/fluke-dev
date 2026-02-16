@@ -122,6 +122,7 @@ label {
     visibility: hidden;
     background-color: var(--background-color);
     border-radius: 4px;
+    bottom: 100%;
     left: 0; right: 0; margin: auto;
     z-index: 10;
     transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
