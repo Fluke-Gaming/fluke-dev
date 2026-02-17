@@ -52,6 +52,7 @@ label {
 
 .form-container {
     margin-top: 1.75rem;
+    margin-bottom: 0;
     align-items: start;
 }
 
