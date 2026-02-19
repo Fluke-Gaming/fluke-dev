@@ -37,15 +37,6 @@ label {
     color: var(--text-color);
 }
 
-.placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.disabled {
-    opacity: 0.6;
-    pointer-events: none;
-}
-
 .long-text {
     grid-column: span 2;
 }
