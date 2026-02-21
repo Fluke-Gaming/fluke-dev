@@ -12,6 +12,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.event h3 {
+    margin: 0.5rem 0;
+}
+
 .event p {
     margin: .25rem 0;
 }
@@ -23,11 +27,12 @@
 }
 
 .date {
-    font-family: Toxigenesis Rg, Open Sans, sans-serif;
+    
 }
 
 .description {
     font-size: .8rem;
+    opacity: .8;
 }
 
 .event-icon {
