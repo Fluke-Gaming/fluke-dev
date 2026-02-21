@@ -176,11 +176,12 @@ if (checkboxContainer) {
 }
 
 
-// SUBMIT FORM TO GOOGLE SCRIPTS
+// SUBMIT FORM TO CLOUDFLARE WORKER
 
 const form = document.getElementById('raidform');
 const formAction = 'https://raid-form.flukegaming57.workers.dev';
 const submitButton = document.getElementById('submit-btn');
+const originalText = submitButton.textContent;
 const requiredFields = form.querySelectorAll('input[required]');
 
 function showToast(message, isSuccess = true) {
@@ -200,11 +201,8 @@ if (form && submitButton) {
     const toasts = document.querySelectorAll('.toast');
     toasts.forEach(t => t.remove());
 
-    const formData = new FormData(form);
-    // console.log('Form data to submit:');
-    // for (let pair of formData.entries()) {
-    //   console.log(`${pair[0]}: ${pair[1]}`);
-    // }
+    const fd = new FormData(form);
+    const formData = Object.fromEntries(fd.entries());
 
     // collect any empty required fields
     const missingFields = [];
@@ -223,18 +221,23 @@ if (form && submitButton) {
         }
       });
       // show error toast & exit submit
-      showToast(`Please fill missing fields: ${missingFields.join(', ')}`, false);
+      showToast(`Not submitted. Please complete required fields: ${missingFields.join(', ')}`, false);
       return;
     }
+
+    form.classList.add('disabled');
+    submitButton.classList.add('disabled');
+    submitButton.textContent = 'Submitting...';
 
     fetch(formAction, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     })
-    .then(response => {
-      console.log('Raw response:', response); // Debugging output
-      if (response.ok) {
+    .then(response => response.json())
+    .then(json => {
+      console.log('Worker response:', json); // Debugging output
+      if (json.appendStatus && json.appendStatus.startsWith('success')) {
         showToast('Signup successful!', true);
 
         form.reset();
@@ -251,7 +254,12 @@ if (form && submitButton) {
       }
     })
     .catch(() => {
-      showToast('Signup failed. Please check your connection and try again.', false);
+      showToast('Network error. Please try again.', false);
+    })
+    .finally(() => {
+      form.classList.remove('disabled');
+      submitButton.classList.remove('disabled');
+      submitButton.textContent = originalText;
     });
   });
 }

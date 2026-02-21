@@ -37,21 +37,13 @@ label {
     color: var(--text-color);
 }
 
-.placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.disabled {
-    opacity: 0.6;
-    pointer-events: none;
-}
-
 .long-text {
     grid-column: span 2;
 }
 
 .form-container {
     margin-top: 1.75rem;
+    margin-bottom: 0;
     align-items: start;
 }
 
@@ -122,6 +114,7 @@ label {
     visibility: hidden;
     background-color: var(--background-color);
     border-radius: 4px;
+    bottom: 100%;
     left: 0; right: 0; margin: auto;
     z-index: 10;
     transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;

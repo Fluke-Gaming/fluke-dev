@@ -9,7 +9,7 @@ fetch('/navbar.html')
     // active link highlighting (exclude logo)
     const links = navContainer.querySelectorAll('a:not(.logo)');
     links.forEach(link => {
-      if (link.href === window.location.href) {
+      if (link.href === window.location.href && !link.href.includes("/coming-soon")) {
         link.classList.add('active');
       }
     });
