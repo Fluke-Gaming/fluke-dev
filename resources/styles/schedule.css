@@ -1,16 +1,33 @@
+.calendar {
+    display: grid;
+    gap: 1rem;
+}
+
 .event {
     background-color: var(--primary-color);
     outline: 1px solid var(--secondary-color);
     border: 0.5px solid rgba(0,0,0,0.35);
-    padding: 0.75rem;
+    padding: 0.25rem 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event p {
+    margin: .25rem 0;
 }
 
 .event:has(.card-icon) {
     display: flex;
     gap: 0.75rem;
     align-items: flex-start;
+}
+
+.date {
+    font-family: Toxigenesis Rg, Open Sans, sans-serif;
+}
+
+.description {
+    font-size: .8rem;
 }
 
 .event-icon {
