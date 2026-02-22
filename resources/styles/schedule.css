@@ -56,3 +56,11 @@
     height: 100%;
     fill: var(--accent-color);
 }
+
+.outline path {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 1px;
+    stroke-dasharray: 2,2;
+    stroke-linejoin: round;
+}
