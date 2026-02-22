@@ -51,16 +51,14 @@
     box-shadow: #0C1013 0px 1px 3px, rgba(61, 174, 69, 0.25) 0px 1px 2px;
 }
 
+.event-icon:has(.logo) {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+}
+
 .event-icon svg {
     width: 100%;
     height: 100%;
     fill: var(--accent-color);
-}
-
-.outline path {
-    fill: none;
-    stroke: var(--accent-color);
-    stroke-width: 1px;
-    stroke-dasharray: 2,2;
-    stroke-linejoin: round;
 }
