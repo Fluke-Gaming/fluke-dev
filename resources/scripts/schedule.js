@@ -27,24 +27,60 @@ async function loadEvents() {
     container.innerHTML = ''; // Clear previous content
 
     events.forEach(event => {
-      const startDate = new Date(event.start);
-      const endDate = event.end ? new Date(event.end) : null;
+    const dateOptions = { weekday: 'short', month: 'short', day: 'numeric' };
 
-      const options = { weekday: 'short', month: 'short', day: 'numeric' };
-      const timeOptions = { hour: '2-digit', minute: '2-digit' };
+    const startDate = new Date(event.start);
+    const endDate = event.end ? new Date(event.end) : null;
 
-      const game = event.title.toLowerCase().includes('magic') ? 'mtg'
-        : event.title.toLowerCase().includes('raiding') ? 'wow'
-        : event.title.toLowerCase().includes('rust') ? 'rust'
-        : 'default';
+    const game = event.title.toLowerCase().includes('magic') ? 'mtg'
+      : event.title.toLowerCase().includes('raiding') ? 'wow'
+      : event.title.toLowerCase().includes('rust') ? 'rust'
+      : 'default';
 
-      let displayDate;
-      if (event.start.length === 10) {
-        // All-day event
-        displayDate = startDate.toLocaleDateString(undefined, options);
+    function formatHour(date) {
+      let hour = date.getHours();
+      const ampm = hour >= 12 ? 'pm' : 'am';
+
+      hour = hour % 12;
+      hour = hour === 0 ? 12 : hour;
+
+      return { hour, ampm };
+    }
+
+    let displayDate;
+
+    if (event.start.length === 10) {
+      // All-day event (YYYY-MM-DD format)
+
+      const startStr = startDate.toLocaleDateString(undefined, dateOptions);
+      const endStr = endDate
+        ? new Date(endDate.getTime() - 86400000) // Google-style all-day end date fix
+            .toLocaleDateString(undefined, dateOptions)
+        : null;
+
+      displayDate = endStr && startStr !== endStr
+        ? `${startStr} - ${endStr}`
+        : startStr;
+
+    } else {
+      // Timed event
+      const startStr = startDate.toLocaleDateString(undefined, dateOptions);
+
+      if (endDate) {
+        const startTime = formatHour(startDate);
+        const endTime = formatHour(endDate);
+
+        // If same am/pm, only show once
+        if (startTime.ampm === endTime.ampm) {
+          displayDate = `${startStr} ${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
+        } else {
+          displayDate = `${startStr} ${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
+        }
       } else {
-        displayDate = `${startDate.toLocaleDateString(undefined, options)} ${startDate.toLocaleTimeString(undefined, timeOptions)}`;
+        const startTime = formatHour(startDate);
+        displayDate = `${startStr} ${startTime.hour} ${startTime.ampm}`;
       }
+    }
 
       const div = document.createElement('div');
       div.className = 'event';
