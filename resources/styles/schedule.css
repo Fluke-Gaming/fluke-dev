@@ -67,9 +67,14 @@
 
 .date {
     margin-left: auto;
-    white-space: nowrap;
     align-self: center;
     font-variant: small-caps;
+    text-align: center;
+}
+
+.break {
+    display: block;
+    height: 0;
 }
 
 .description {
@@ -116,4 +121,14 @@
   font-size: 2rem;
   color: #3DAE45; /* your accent color */
   text-shadow: 0 0 8px rgba(61, 174, 69, 0.7);
+}
+
+/* ===== TABLET (768px+) ===== */
+
+@media (min-width: 768px) {
+
+    .date {
+        white-space: nowrap;
+        display: inline;
+    }
 }

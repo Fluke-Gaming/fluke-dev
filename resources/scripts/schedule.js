@@ -14,7 +14,7 @@ function parseLocalDate(dateStr) {
   return new Date(year, month - 1, day);
 }
 
-const MAX_EVENTS = 5;
+const MAX_EVENTS = 3;
 
 // call schedule worker & display agenda
 async function loadEvents() {
@@ -58,6 +58,8 @@ async function loadEvents() {
         ? (isAllDay ? parseLocalDate(event.end) : new Date(event.end))
         : null;
 
+      const description = event.description.replace('&nbsp', ' ');
+
       const game = event.title.toLowerCase().includes('magic') ? 'mtg'
         : event.title.toLowerCase().includes('raiding') ? 'wow'
         : event.title.toLowerCase().includes('rust') ? 'rust'
@@ -89,9 +91,9 @@ async function loadEvents() {
           const endTime = formatHour(endDate);
 
           if (startTime.ampm === endTime.ampm) {
-            displayDate = `${startStr} at ${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
+            displayDate = `${startStr}<span=class="break"> at </span>${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
           } else {
-            displayDate = `${startStr} at ${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
+            displayDate = `${startStr}<span=class="break"> at </span>${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
           }
         } else {
           const startTime = formatHour(startDate);
@@ -109,7 +111,7 @@ async function loadEvents() {
         <div class="event-content">
           <div class="text-block">
             <h3>${event.title}</h3>
-            <p class="description">${event.description || ''}</p>
+            <p class="description">${description || ''}</p>
           </div>
           <p class="date">${displayDate}</p>
         </div>
