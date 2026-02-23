@@ -70,11 +70,15 @@
     align-self: center;
     font-variant: small-caps;
     text-align: center;
+    white-space: nowrap;
+}
+
+.break::before {
+    content: "";
 }
 
 .break {
     display: block;
-    height: 0;
 }
 
 .description {
@@ -126,9 +130,13 @@
 /* ===== TABLET (768px+) ===== */
 
 @media (min-width: 768px) {
+    
+    .break::before {
+        content: " at ";
+    }
 
-    .date {
-        white-space: nowrap;
+    .break {
         display: inline;
     }
+
 }
