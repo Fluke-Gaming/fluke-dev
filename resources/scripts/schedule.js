@@ -80,7 +80,7 @@ async function loadEvents() {
         }
 
         displayDate = endStr && startStr !== endStr
-          ? `${startStr}<span class="break-dash"> - </span>${endStr}`
+          ? `${startStr} - <span class="break">${endStr}</span>`
           : startStr;
 
       } else {

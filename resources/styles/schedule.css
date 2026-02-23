@@ -13,6 +13,7 @@
     display: flex;
     gap: 1.25rem;
     align-items: center;
+    order: -1;
 }
 
 .event h3 {
@@ -130,6 +131,10 @@
 /* ===== TABLET (768px+) ===== */
 
 @media (min-width: 768px) {
+
+    .events-visual {
+        order: 0;
+    }
     
     .break-at::before {
         content: " at ";
