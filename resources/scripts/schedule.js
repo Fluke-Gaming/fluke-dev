@@ -89,9 +89,9 @@ async function loadEvents() {
           const endTime = formatHour(endDate);
 
           if (startTime.ampm === endTime.ampm) {
-            displayDate = `${startStr} ${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
+            displayDate = `${startStr} at ${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
           } else {
-            displayDate = `${startStr} ${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
+            displayDate = `${startStr} at ${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
           }
         } else {
           const startTime = formatHour(startDate);
@@ -107,9 +107,11 @@ async function loadEvents() {
             ${gameIcons[game]}
         </div>
         <div class="event-content">
+          <div class="text-block">
             <h3>${event.title}</h3>
-            <p class="date">${displayDate}</p>
             <p class="description">${event.description || ''}</p>
+          </div>
+          <p class="date">${displayDate}</p>
         </div>
       `;
 
