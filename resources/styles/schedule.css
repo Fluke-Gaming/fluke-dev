@@ -80,3 +80,40 @@
 .description a {
     color: var(--accent-color);
 }
+
+/* Right column: visual / mood element */
+.events-visual {
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #0c0f12, #1a1f23);
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Faint silhouettes in the background */
+.events-visual::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 140%;
+  background: url('/resources/images/gamers.jpg') no-repeat center;
+  background-size: cover;
+  opacity: 0.05; /* very faint */
+  pointer-events: none;
+}
+
+/* Heading style with subtle glow */
+.events-visual h2 {
+  position: relative;
+  z-index: 1;
+  font-size: 2rem;
+  color: #3DAE45; /* your accent color */
+  text-shadow: 0 0 8px rgba(61, 174, 69, 0.7);
+}
