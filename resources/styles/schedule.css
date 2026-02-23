@@ -16,7 +16,7 @@
 }
 
 .event h3 {
-    margin: 0.5rem 0;
+    margin: 0.5rem 0 0;
 }
 
 .event p {
@@ -54,8 +54,10 @@
 
 .event-content {
     display: flex;
+    gap: 1rem;
     flex: 1;
     position: relative;
+    justify-content: space-between;
 }
 
 .text-block {
@@ -66,9 +68,15 @@
 .date {
     margin-left: auto;
     white-space: nowrap;
+    align-self: center;
+    font-variant: small-caps;
 }
 
 .description {
     font-size: .8rem;
     opacity: .8;
+}
+
+.description a {
+    color: var(--accent-color);
 }
