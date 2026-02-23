@@ -80,7 +80,7 @@ async function loadEvents() {
         }
 
         displayDate = endStr && startStr !== endStr
-          ? `${startStr} - ${endStr}`
+          ? `${startStr}<span class="break-dash"> - </span>${endStr}`
           : startStr;
 
       } else {
@@ -91,9 +91,9 @@ async function loadEvents() {
           const endTime = formatHour(endDate);
 
           if (startTime.ampm === endTime.ampm) {
-            displayDate = `${startStr}<span class="break"></span>${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
+            displayDate = `${startStr}<span class="break-at"></span>${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
           } else {
-            displayDate = `${startStr}<span class="break"></span>${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
+            displayDate = `${startStr}<span class="break-at"></span>${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
           }
         } else {
           const startTime = formatHour(startDate);

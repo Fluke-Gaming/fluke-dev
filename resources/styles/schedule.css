@@ -73,11 +73,11 @@
     white-space: nowrap;
 }
 
-.break::before {
+.break-at::before {
     content: "";
 }
 
-.break {
+.break, .break-at {
     display: block;
 }
 
@@ -131,11 +131,11 @@
 
 @media (min-width: 768px) {
     
-    .break::before {
+    .break-at::before {
         content: " at ";
     }
 
-    .break {
+    .break, .break-at {
         display: inline;
     }
 
