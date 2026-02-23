@@ -1,4 +1,22 @@
-// schedule.js
+// helper functions
+function formatHour(date) {
+  let hour = date.getHours();
+  const ampm = hour >= 12 ? 'pm' : 'am';
+
+  hour = hour % 12;
+  hour = hour === 0 ? 12 : hour;
+
+  return { hour, ampm };
+}
+
+function parseLocalDate(dateStr) {
+  const [year, month, day] = dateStr.split('-').map(Number);
+  return new Date(year, month - 1, day);
+}
+
+const MAX_EVENTS = 5;
+
+// call schedule worker & display agenda
 async function loadEvents() {
   const gameIcons = {
     mtg: `<svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 50 86" class="icon-zoom">
@@ -23,80 +41,81 @@ async function loadEvents() {
 
     const container = document.getElementById('calendar');
     if (!container) return;
+    container.innerHTML = '';
 
-    container.innerHTML = ''; // Clear previous content
-
-    events.forEach(event => {
     const dateOptions = { weekday: 'short', month: 'short', day: 'numeric' };
 
-    const startDate = new Date(event.start);
-    const endDate = event.end ? new Date(event.end) : null;
+    const limitedEvents = MAX_EVENTS
+      ? events.slice(0, MAX_EVENTS)
+      : events;
 
-    const game = event.title.toLowerCase().includes('magic') ? 'mtg'
-      : event.title.toLowerCase().includes('raiding') ? 'wow'
-      : event.title.toLowerCase().includes('rust') ? 'rust'
-      : 'default';
-
-    function formatHour(date) {
-      let hour = date.getHours();
-      const ampm = hour >= 12 ? 'pm' : 'am';
-
-      hour = hour % 12;
-      hour = hour === 0 ? 12 : hour;
-
-      return { hour, ampm };
-    }
-
-    let displayDate;
-
-    if (event.start.length === 10) {
-      // All-day event (YYYY-MM-DD format)
-
-      const startStr = startDate.toLocaleDateString(undefined, dateOptions);
-      const endStr = endDate
-        ? new Date(endDate.getTime() - 86400000) // Google-style all-day end date fix
-            .toLocaleDateString(undefined, dateOptions)
+    limitedEvents.forEach(event => {
+      const isAllDay = !event.start.includes('T');
+      const startDate = isAllDay
+        ? parseLocalDate(event.start)
+        : new Date(event.start);
+      const endDate = event.end
+        ? (isAllDay ? parseLocalDate(event.end) : new Date(event.end))
         : null;
 
-      displayDate = endStr && startStr !== endStr
-        ? `${startStr} - ${endStr}`
-        : startStr;
+      const game = event.title.toLowerCase().includes('magic') ? 'mtg'
+        : event.title.toLowerCase().includes('raiding') ? 'wow'
+        : event.title.toLowerCase().includes('rust') ? 'rust'
+        : 'default';
 
-    } else {
-      // Timed event
-      const startStr = startDate.toLocaleDateString(undefined, dateOptions);
+      let displayDate;
 
-      if (endDate) {
-        const startTime = formatHour(startDate);
-        const endTime = formatHour(endDate);
+      if (isAllDay) {
+        const startStr = startDate.toLocaleDateString(undefined, dateOptions);
 
-        // If same am/pm, only show once
-        if (startTime.ampm === endTime.ampm) {
-          displayDate = `${startStr} ${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
-        } else {
-          displayDate = `${startStr} ${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
+        let endStr = null;
+
+        if (endDate) {
+          const correctedEnd = new Date(endDate);
+          correctedEnd.setDate(correctedEnd.getDate() - 1);
+
+          endStr = correctedEnd.toLocaleDateString(undefined, dateOptions);
         }
+
+        displayDate = endStr && startStr !== endStr
+          ? `${startStr} - ${endStr}`
+          : startStr;
+
       } else {
-        const startTime = formatHour(startDate);
-        displayDate = `${startStr} ${startTime.hour} ${startTime.ampm}`;
+        const startStr = startDate.toLocaleDateString(undefined, dateOptions);
+
+        if (endDate) {
+          const startTime = formatHour(startDate);
+          const endTime = formatHour(endDate);
+
+          if (startTime.ampm === endTime.ampm) {
+            displayDate = `${startStr} ${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
+          } else {
+            displayDate = `${startStr} ${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
+          }
+        } else {
+          const startTime = formatHour(startDate);
+          displayDate = `${startStr} ${startTime.hour} ${startTime.ampm}`;
+        }
       }
-    }
 
       const div = document.createElement('div');
       div.className = 'event';
+
       div.innerHTML = `
         <div class="event-icon">
             ${gameIcons[game]}
         </div>
         <div class="event-content">
             <h3>${event.title}</h3>
-            <p class="date">${displayDate}${endDate ? ' - ' + endDate.toLocaleTimeString(undefined, timeOptions) : ''}</p>
+            <p class="date">${displayDate}</p>
             <p class="description">${event.description || ''}</p>
         </div>
-        `;
+      `;
 
       container.appendChild(div);
     });
+
   } catch (err) {
     console.error('Error loading events:', err);
   }
