@@ -58,7 +58,7 @@ async function loadEvents() {
         ? (isAllDay ? parseLocalDate(event.end) : new Date(event.end))
         : null;
 
-      const description = event.description.replace('&nbsp', ' ');
+      const description = event.description.replace('&nbsp;', ' ');
 
       const game = event.title.toLowerCase().includes('magic') ? 'mtg'
         : event.title.toLowerCase().includes('raiding') ? 'wow'
