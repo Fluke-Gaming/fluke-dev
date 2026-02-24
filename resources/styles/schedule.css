@@ -18,7 +18,6 @@
 }
 
 .event h3 {
-    grid-area: title;
     margin: 0;
 }
 
@@ -33,7 +32,6 @@
     background-color: rgba(61, 174, 69, 0.15);
     box-shadow: #0C1013 0px 1px 3px, rgba(61, 174, 69, 0.25) 0px 1px 2px;
 
-    grid-area: icon;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,16 +52,13 @@
 .event-content {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-areas:
-        "icon title"
-        "description description";
     gap: 0.5rem 0.75rem;
     align-items: start;
 }
 
 .text-block {
   display: flex;
-  flex-direction: column; /* stack title + description on the left */
+  flex-direction: column;
 }
 
 .date {
@@ -87,7 +82,7 @@
     font-size: .8rem;
     opacity: .8;
 
-    grid-area: description;
+    grid-column: 1 / -1;
 }
 
 .description a {
