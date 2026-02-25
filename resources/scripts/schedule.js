@@ -107,16 +107,10 @@ async function loadEvents() {
       div.className = 'event';
 
       div.innerHTML = `
-        <div class="event-icon">
-            ${gameIcons[game]}
-        </div>
-        <div class="event-content">
-          <div class="text-block">
-            <h3>${event.title}</h3>
-            <p class="description">${description || ''}</p>
-          </div>
-          <p class="date">${displayDate}</p>
-        </div>
+        <div class="event-icon">${gameIcons[game]}</div>
+        <h3>${event.title}</h3>
+        <p class="description">${description || ''}</p>
+        <p class="date">${displayDate}</p>
       `;
 
       container.appendChild(div);
