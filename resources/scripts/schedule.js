@@ -36,8 +36,33 @@ async function loadEvents() {
   };
 
   try {
-    const res = await fetch('https://calendar-proxy.flukegaming57.workers.dev');
-    const events = await res.json();
+    let events;
+
+    if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') {
+      events = [
+        {
+          title: "Friday Night Magic",
+          start: "2026-02-27T17:00:00-07:00",
+          end: "2026-02-27T21:00:00-07:00",
+          description: "Virtual MTG hosted on <a href=\"https://spelltable.com\" target=\"_blank\">Spelltable</a> or <a href=\"https://www.tabletopsimulator.com\" target=\"_blank\">Tabletop Simulator</a>"
+        },
+        {
+          title: "Weekend Rust Wipe",
+          start: "2026-03-05",
+          end: "2026-03-09",
+          description: "Selecting a community server together with increased farm"
+        },
+        {
+          title: "Midnight Season 1 Raiding",
+          start: "2026-03-18T18:00:00-06:00",
+          end: "2026-03-18T21:00:00-06:00",
+          description: "Progression raiding and <a href=\"https://www.twitch.tv/flukegamingttv\">streaming</a> until AOTC"
+        }
+      ];
+    } else {
+      const res = await fetch('https://calendar-proxy.flukegaming57.workers.dev');
+      events = await res.json();
+    }
 
     const container = document.getElementById('calendar');
     if (!container) return;
