@@ -134,7 +134,22 @@
     font-size: 2rem;
     color: #3DAE45; /* your accent color */
     text-shadow: 0 0 8px rgba(61, 174, 69, 0.7);
-    }
+}
+
+.stream-player {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    outline: 1px solid var(--secondary-color);
+    border: 0.5px solid rgba(0, 0, 0, 0.35);
+    border-radius: 8px;
+}
+
+.stream-player iframe, #fluke-ttv {
+    width: 100%;
+    height: 101%;
+}
 
 /* ===== TABLET (768px+) ===== */
 
