@@ -58,6 +58,19 @@
 }
 
 /* =========================
+   Content Block
+========================= */
+
+.content-block {
+    margin: 2rem 0;
+}
+
+.content-block__title {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+/* =========================
    Grid Block
 ========================= */
 
@@ -210,5 +223,9 @@
 
     .card {
         padding: 1.5rem;
+    }
+
+    .card--middle {
+        margin: 0;
     }
 }

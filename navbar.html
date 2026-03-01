@@ -1,19 +1,31 @@
-<nav class="navbar">
-  <div class="navbar-container">
-    <a href="/" class="logo">
-      <img src="/resources/images/fluke-logo.png" alt="Fluke Gaming" class="logo-img">
-      <span class="logo-text"><span class="text-accent">Fluke</span>Gaming</span>
+<header class="nav">
+  <div class="nav__container">
+    <a href="/" class="nav__brand">
+      <img 
+        src="/resources/images/fluke-logo.png" 
+        alt="Fluke Gaming" 
+        class="nav__logo"
+      >
+      <span class="nav__title">
+        <span class="nav__title-accent">Fluke</span>Gaming
+      </span>
     </a>
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="navbar-links">
-      <a href="/coming-soon">Discord</a>
-      <a href="/wow">WoW</a>
-      <a href="/schedule">Schedule</a>
-      <a href="/coming-soon">Servers</a>
-    </div>
+
+    <button 
+      class="nav__toggle" 
+      aria-label="Toggle navigation" 
+      aria-expanded="false"
+    >
+      <span class="nav__toggle-bar"></span>
+      <span class="nav__toggle-bar"></span>
+      <span class="nav__toggle-bar"></span>
+    </button>
+
+    <nav class="nav__menu" aria-label="Primary">
+      <a href="/coming-soon" class="nav__link">Discord</a>
+      <a href="/wow" class="nav__link">WoW</a>
+      <a href="/coming-soon" class="nav__link">Schedule</a>
+      <a href="/coming-soon" class="nav__link">Servers</a>
+    </nav>
   </div>
-</nav>
+</header>

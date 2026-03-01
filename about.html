@@ -1,52 +1,66 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Fluke Gaming</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="resources/images/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
-        <link rel="manifest" href="resources/images/favicon/site.webmanifest">
-        <meta name="description" content="Fluke Gaming is a laid-back community of semi-casual gamers who raid together in WoW and host private Steam servers. We value respect, inclusivity, and friendship. Find us on Discord, Twitch, and more!">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="resources/styles/main.css">
-        <link rel="stylesheet" href="resources/styles/navbar.css">
-        <link rel="stylesheet" href="resources/styles/footer.css">
-        <link rel="stylesheet" href="resources/styles/about.css">
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open Sans'>
-    </head>
-    <body>
-        <div id="navbar"></div>
-        <main>
-            <div class="container">
-                <h1 class="page-title">About Us</h1>
-                <p>Who we are, and what we're all about.</p>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fluke Gaming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fluke Gaming is a laid-back community of semi-casual gamers who raid together in WoW and host private servers.">
 
-                <div class="section">
-                    <h2>Our History</h2>
-                    <p>Our group was established by a handful of WoW players who continued playing together through multiple expansions, different game trends, and life changes. We've been together since 2010, and we're still going strong!</p>
-                </div>
-                <div class="section">
-                    <h2>The Community</h2>
-                    <p>Our members are primarily adults who make time for gaming despite our busy schedules. Since we only have limited time to spend together, we make sure that real-world drama doesn't intrude in our conversations.</p>
-                </div>
-                <div class="section">
-                    <h2>Group Activities</h2>
-                    <p>While most of us play WoW together, we also host a number of other gaming opportunities. Many of us play MTG, and we often launch private gaming servers that have included Rust, Abiotic Factor, 7 Days, Enshrouded, etc.</p>
-                </div>
-            </div>
+  <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon/favicon-32x32.png">
+  <link rel="stylesheet" href="/resources/styles/main.css">
+  <link rel="stylesheet" href="/resources/styles/components.css">
+  <link rel="stylesheet" href="/resources/styles/navbar.css">
+  <link rel="stylesheet" href="/resources/styles/footer.css">
+</head>
 
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        </main>
-        <div id="footer"></div>
-        <script src="/resources/scripts/navbar.js"></script>
-        <script src="/resources/scripts/footer.js"></script>
-    </body>
+<body class="site">
+  <div id="navbar"></div>
+
+  <main class="site__main">
+
+    <!-- Page Header -->
+    <section class="section section--page-header">
+      <div class="container">
+        <header class="section__header--page">
+          <h1 class="section__title">About Us</h1>
+          <p class="section__subtitle">A long-running, not-too-serious gaming community.</p>
+        </header>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="section">
+      <div class="container container--narrow">
+
+        <article class="content-block">
+          <h2 class="content-block__title">Our History</h2>
+          <p>
+            Fluke Gaming began in 2010 with a small group of World of Warcraft players who continued playing together through multiple expansions, industry trends, and real-life changes. What started as a raid team evolved into a long-term community.
+          </p>
+        </article>
+
+        <article class="content-block">
+          <h2 class="content-block__title">The Community</h2>
+          <p>
+            Most members are adults balancing work, families, and limited gaming time. Because of that, we value mutual respect, maturity, and low-drama interactions. We treat gaming as something we look forward to, not something that creates stress.
+          </p>
+        </article>
+
+        <article class="content-block">
+          <h2 class="content-block__title">Group Activities</h2>
+          <p>
+            While World of Warcraft remains our primary game, we also organize Magic: The Gathering nights and spin up private servers for different multiplayer games. So far this has included titles such as Rust, 7 Days to Die, Enshrouded, and more.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="/resources/scripts/navbar.js" defer></script>
+  <script src="/resources/scripts/footer.js" defer></script>
+</body>
 </html>

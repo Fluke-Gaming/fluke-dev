@@ -95,7 +95,7 @@ checkbox.addEventListener('change', () => {
     // reset the alt fields
     altSelects.forEach(select => {
         const clearBtn = select.querySelector('.custom-select__clear');
-        select.classList.toggle('u-disabled', !checkbox.checked);
+        select.classList.toggle('is-disabled', !checkbox.checked);
         if (!checkbox.checked && select.dataset.value) {
             clearBtn.click();
         }
@@ -174,7 +174,7 @@ form.addEventListener('submit', async e => {
     });
 
     // Disable form
-    form.classList.add('u-disabled');
+    form.classList.add('is-disabled');
     submitBtn.textContent = 'Submitting...';
 
     try {
@@ -195,14 +195,14 @@ form.addEventListener('submit', async e => {
         } else {
             showToast('Signup failed.', 'error');
             submitBtn.textContent = 'Submit';
-            form.classList.remove('u-disabled');
+            form.classList.remove('is-disabled');
         }
 
     } catch (err) {
         console.error(err);
         showToast('Submit failed.', 'error');
         submitBtn.textContent = 'Submit';
-        form.classList.remove('u-disabled');
+        form.classList.remove('is-disabled');
     }
 });
 

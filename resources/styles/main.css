@@ -91,11 +91,15 @@ a {
     padding: 0 1.5rem;
 }
 
+.container--narrow {
+    max-width: 800px;
+}
+
 .u-accent {
     color: var(--color-accent);
 }
 
-.u-disabled {
+.is-disabled {
     opacity: 0.6;
     pointer-events: none;
 }
@@ -111,6 +115,12 @@ a {
         linear-gradient(rgba(23, 27, 31, 0.95), rgba(39, 46, 52, 0.85)),
         url("/resources/images/abstract-green.png") center / cover no-repeat;
     background-blend-mode: multiply;
+}
+
+.hero--bosskill {
+    background:
+        linear-gradient(rgba(23, 27, 31, 0.95), rgba(39, 46, 52, 0.85)),
+        url("/resources/images/bosskill-neon.png") center / cover no-repeat;
 }
 
 .hero__inner {
@@ -190,6 +200,7 @@ a {
 
     .hero__actions {
         flex-direction: column;
-        gap: 1rem;
+        gap: 2rem;
+        margin: 2rem;
     }
 }

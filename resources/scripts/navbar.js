@@ -6,38 +6,61 @@ fetch('/navbar.html')
 
     navContainer.innerHTML = html;
 
-    // active link highlighting (exclude logo)
-    const links = navContainer.querySelectorAll('a:not(.logo)');
+    const toggle = navContainer.querySelector('.nav__toggle');
+    const menu = navContainer.querySelector('.nav__menu');
+    const links = navContainer.querySelectorAll('.nav__link');
+
+    // ===== ACTIVE LINK =====
+    const normalizePath = (path) => {
+      return path
+        .replace(/index\.html$/i, '')   // remove index.html
+        .replace(/\.html$/i, '')        // remove .html
+        .replace(/\/+$/, '')            // remove trailing slash
+        .toLowerCase();
+    };
+
+    const currentPath = normalizePath(window.location.pathname);
+
     links.forEach(link => {
-      if (link.href === window.location.href && !link.href.includes("/coming-soon")) {
-        link.classList.add('active');
+      const linkUrl = new URL(link.href);
+      const linkPath = normalizePath(linkUrl.pathname);
+      if (
+        linkPath === currentPath &&
+        !linkPath.includes('/coming-soon')
+      ) {
+        link.classList.add('selected');
       }
     });
 
-    // hamburger menu toggle
-    const hamburger = navContainer.querySelector('.hamburger');
-    const navbarLinks = navContainer.querySelector('.navbar-links');
+    if (!toggle || !menu) return;
 
-    if (hamburger && navbarLinks) {
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navbarLinks.classList.toggle('active');
-      });
+    // ===== TOGGLE MENU =====
+    const closeMenu = () => {
+      toggle.classList.remove('is-active');
+      menu.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
 
-      // close menu when a link is clicked
-      links.forEach(link => {
-        link.addEventListener('click', () => {
-          hamburger.classList.remove('active');
-          navbarLinks.classList.remove('active');
-        });
-      });
+    const openMenu = () => {
+      toggle.classList.add('is-active');
+      menu.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    };
 
-      // close menu when clicking outside navbar
-      document.addEventListener('click', (e) => {
-        if (!navContainer.contains(e.target)) {
-          hamburger.classList.remove('active');
-          navbarLinks.classList.remove('active');
-        }
-      });
-    }
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.contains('is-open');
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    // ===== CLOSE ON LINK CLICK =====
+    links.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // ===== CLOSE ON OUTSIDE CLICK =====
+    document.addEventListener('click', (e) => {
+      if (!navContainer.contains(e.target)) {
+        closeMenu();
+      }
+    });
   });
