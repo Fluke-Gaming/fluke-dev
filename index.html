@@ -1,44 +1,42 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Fluke Gaming</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="resources/images/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
-        <link rel="manifest" href="resources/images/favicon/site.webmanifest">
-        <meta name="description" content="Fluke Gaming is a laid-back community of semi-casual gamers who raid together in WoW and host private Steam servers. We value respect, inclusivity, and friendship. Find us on Discord, Twitch, and more!">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="resources/styles/main.css">
-        <link rel="stylesheet" href="resources/styles/navbar.css">
-        <link rel="stylesheet" href="resources/styles/footer.css">
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open Sans'>
-    </head>
-    <body>
-        <div id="navbar"></div>
-        <main>
-            <div class="hero">
-                <div class="hero-content">
-                    <h1><span class="text-accent">Fluke</span><br>Gaming</h1>
-                    <p>Progression that clicks without the kicks. Friendships that level up. Your community is here.</p>
-                    <div class="hero-buttons">
-                        <a href="/coming-soon.html" class="btn btn-primary">Join Us</a>
-                        <a href="/coming-soon.html" class="btn btn-secondary">Schedule</a>
-                    </div>
-                </div>
-            </div>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fluke Gaming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fluke Gaming is a laid-back community of semi-casual gamers who raid together in WoW and host private servers.">
 
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        </main>
-        <div id="footer"></div>
-        <script src="/resources/scripts/navbar.js"></script>
-        <script src="/resources/scripts/footer.js"></script>
-    </body>
+  <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon/favicon-32x32.png">
+  <link rel="stylesheet" href="/resources/styles/main.css">
+  <link rel="stylesheet" href="/resources/styles/navbar.css">
+  <link rel="stylesheet" href="/resources/styles/footer.css">
+</head>
+
+<body class="site full">
+  <div id="navbar"></div>
+
+  <main class="site__main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner container">
+        <h1 id="hero-title" class="hero__title">
+          <span class="u-accent">Fluke</span><br>Gaming
+        </h1>
+
+        <p class="hero__tagline">
+          Progression that clicks without the kicks. Friendships that level up. Your community is here.
+        </p>
+
+        <div class="hero__actions">
+          <a href="/coming-soon" class="button button--primary">Join Us</a>
+          <a href="/coming-soon" class="button button--outline">Schedule</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="/resources/scripts/navbar.js" defer></script>
+  <script src="/resources/scripts/footer.js" defer></script>
+</body>
 </html>
