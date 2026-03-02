@@ -159,12 +159,7 @@ form.addEventListener('submit', async e => {
     }
 
     // 5️⃣ Proceed with form submission (disable fields, send data, etc.)
-    const formData = new FormData();
-    
-    // Standard inputs
-    form.querySelectorAll('input').forEach(input => {
-        formData.set(input.name, input.value);
-    });
+    const formData = new FormData(form);
 
     // Custom selects
     form.querySelectorAll('.custom-select').forEach(select => {
@@ -178,14 +173,11 @@ form.addEventListener('submit', async e => {
     submitBtn.textContent = 'Submitting...';
 
     try {
-        for (const [key, value] of formData.entries()) {
-            console.log(key, value);
-        }
-        
+        const jsonData = Object.fromEntries(formData.entries());
         const response = await fetch(formAction, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(jsonData)
         });
         const answer = await response.json();
 
