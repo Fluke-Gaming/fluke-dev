@@ -1,59 +1,52 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Fluke Gaming</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="resources/images/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
-        <link rel="manifest" href="resources/images/favicon/site.webmanifest">
-        <meta name="description" content="Fluke Gaming is a laid-back community of semi-casual gamers who raid together in WoW and host private Steam servers. We value respect, inclusivity, and friendship. Find us on Discord, Twitch, and more!">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="resources/styles/main.css">
-        <link rel="stylesheet" href="resources/styles/navbar.css">
-        <link rel="stylesheet" href="resources/styles/footer.css">
-        <link rel="stylesheet" href="resources/styles/schedule.css">
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open Sans'>
-    </head>
-    <body>
-        <div id="navbar"></div>
-        <main>
-            <div class="container">
-                <h1 class="page-title">Community Schedule</h1>
-                <p>Never miss an event. Here's what's coming up soon.</p>
+<html lang="en">
 
-                <div class="card-container card-cols-2-tablet">
-                    <div id="calendar" class="calendar"></div>
-                    <div class="events-visual">
-                        <h2>Event Calendar</h2>
-                    </div>
-                </div>
+<head>
+  <meta charset="utf-8">
+  <title>Fluke Gaming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Fluke Gaming is a laid-back community of semi-casual gamers who raid together in WoW and host private servers.">
 
-                <h2 class="center">Live Streams</h2>
-                <div class="card-container card-cols-2-left">
-                    <div class="stream-player">
-                        <div id="fluke-ttv"></div>
-                    </div>
+  <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon/favicon-32x32.png">
+  <link rel="stylesheet" href="/resources/styles/main.css">
+  <link rel="stylesheet" href="/resources/styles/components.css">
+  <link rel="stylesheet" href="/resources/styles/schedule.css">
+  <link rel="stylesheet" href="/resources/styles/navbar.css">
+  <link rel="stylesheet" href="/resources/styles/footer.css">
+</head>
 
-                    <div id="stream-selector"></div>
-                </div>
+<body class="site">
+  <div id="navbar"></div>
 
-            </div>
+  <main class="site__main">
 
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        </main>
-        <div id="footer"></div>
-        <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
-        <script src="/resources/scripts/calendar.js"></script>
-        <script src="/resources/scripts/streams.js"></script>
-        <script src="/resources/scripts/navbar.js"></script>
-        <script src="/resources/scripts/footer.js"></script>
-    </body>
+    <!-- Header -->
+    <section class="section">
+      <div class="container">
+        <header class="section__header--page">
+          <h1 class="section__title">Gaming Schedule</h1>
+          <p class="section__subtitle">Never miss an event. Here's what coming up soon.</p>
+        </header>
+      </div>
+    </section>
+
+    <!-- Raid Types -->
+    <section class="section">
+      <div class="container">
+        <div id="calendar" class="grid grid--3">
+          
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="/resources/scripts/navbar.js" defer></script>
+  <script src="/resources/scripts/footer.js" defer></script>
+  <script src="/resources/scripts/calendar.js" defer></script>
+</body>
+
 </html>
