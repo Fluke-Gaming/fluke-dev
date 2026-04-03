@@ -107,7 +107,7 @@ async function loadEvents() {
         }
 
         displayDate = endStr && startStr !== endStr
-          ? `${startStr} - <span class="break">${endStr}</span>`
+          ? `${startStr} - <span class="card__text--date-break">${endStr}</span>`
           : startStr;
 
       } else {
@@ -118,9 +118,9 @@ async function loadEvents() {
           const endTime = formatHour(endDate);
 
           if (startTime.ampm === endTime.ampm) {
-            displayDate = `${startStr}<span class="break-at"></span>${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
+            displayDate = `${startStr}<span class="card__text--date-join"></span>${startTime.hour} - ${endTime.hour} ${endTime.ampm}`;
           } else {
-            displayDate = `${startStr}<span class="break-at"></span>${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
+            displayDate = `${startStr}<span class="card__text--date-join"></span>${startTime.hour} ${startTime.ampm} - ${endTime.hour} ${endTime.ampm}`;
           }
         } else {
           const startTime = formatHour(startDate);
@@ -129,11 +129,11 @@ async function loadEvents() {
       }
 
       const div = document.createElement('article');
-      div.className = 'grid card';
+      div.className = 'grid card grid__event';
 
       div.innerHTML = `
-        <div class="card__icon">${gameIcons[game]}</div>
-        <h3 class="card__title card__title--event">${event.title}</h3>
+        <div class="card__icon card__icon--event">${gameIcons[game]}</div>
+        <h3 class="card__title--event">${event.title}</h3>
         <p class="card__text card__text--event">${description || ''}</p>
         <p class="card__text card__text--date">${displayDate}</p>
       `;

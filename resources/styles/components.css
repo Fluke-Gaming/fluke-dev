@@ -221,6 +221,11 @@
         font-size: 1.8rem;
     }
 
+    .section__header--page .section__subtitle {
+        max-width: 85%;
+        justify-self: center;
+    }
+
     .card {
         padding: 1.5rem;
     }
