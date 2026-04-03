@@ -56,7 +56,7 @@ async function loadEvents() {
           title: "Midnight Season 1 Raiding",
           start: "2026-03-18T18:00:00-06:00",
           end: "2026-03-18T21:00:00-06:00",
-          description: "Progression raiding and <a href=\"https://www.twitch.tv/flukegamingttv\">streaming</a> until AOTC"
+          description: "Progression raiding and <a href=\"https://www.twitch.tv/flukegamingttv\" target=\"_blank\">streaming</a> until AOTC"
         }
       ];
     } else {
@@ -148,3 +148,11 @@ async function loadEvents() {
 
 // Run on page load
 document.addEventListener('DOMContentLoaded', loadEvents);
+
+// Normalize all event description links to target _blank
+const eventDescriptions = document.querySelectorAll('.card__text--event');
+eventDescriptions.forEach(description => {
+  description.querySelectorAll('a').forEach(a => {
+    a.target = '_blank';
+  });
+});
