@@ -1,6 +1,6 @@
 /* ===== BASE (DESKTOP DEFAULT) ===== */
 
-.nav {
+#navbar {
     background: rgba(5, 8, 10, 0.85);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(61, 174, 69, 0.4);
