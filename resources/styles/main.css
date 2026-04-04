@@ -58,6 +58,7 @@ button {
 }
 
 .site__main {
+    padding-top: 60px;
     flex: 1;
 }
 
