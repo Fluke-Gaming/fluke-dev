@@ -1,14 +1,13 @@
 /* ===== BASE (DESKTOP DEFAULT) ===== */
 
 .nav {
-    width: 100%;
     background: rgba(5, 8, 10, 0.85);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(61, 174, 69, 0.4);
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
     z-index: 100;
 }
 
