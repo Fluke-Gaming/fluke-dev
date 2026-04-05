@@ -104,7 +104,7 @@ async function loadWCLRankings() {
 }
 
 async function loadWCLLastRaid() {
-    const element = document.getElementById('fluke-lastraid');
+    const element = document.getElementById('fluke-warcraftlogs');
 
     const WORKER_URL = 'https://warcraft-logs.flukegaming57.workers.dev/lastraid';
 
@@ -140,7 +140,8 @@ async function loadWCLLastRaid() {
         `;
 
     } catch (err) {
-        element.innerHTML = `<div class="error">Could not load raid data: ${err.message}</div>`;
+        element.innerHTML = `<p class="card__text">Could not load Warcraft Logs data: ${err.message}</p>
+            <p class="card__text">Click this tile to visit WCL directly.</p>`;
     }
 }
 
