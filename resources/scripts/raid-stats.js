@@ -136,10 +136,7 @@ async function loadWCLLastRaid() {
             <div class="card__stats">
                 <div class="boss-pill-row">${bossPills}</div>
             </div>
-            <p class="card__text--footnote">
-                Data via Warcraft Logs · 
-                <a href="${d.url}" target="_blank" rel="noopener">View all logs ↗</a>
-            </p>
+            <p class="card__text--footnote">Data via Warcraft Logs</p>
         `;
 
     } catch (err) {
