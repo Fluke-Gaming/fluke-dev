@@ -1,0 +1,19 @@
+.card__stats p {
+    font-variant: small-caps;
+}
+
+.card__stats h4 {
+    padding-bottom: 0.25rem;
+}
+
+.card__text--footnote {
+    font-size: 0.75rem;
+    opacity: 0.65;
+
+    text-align: center;
+    line-height: 0.5;
+}
+
+.u-emphasis {
+    font-size: larger;
+}

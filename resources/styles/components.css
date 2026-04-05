@@ -130,21 +130,9 @@
     align-content: center;
 }
 
-/* .card--centered {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+.card--dark {
+    background: var(--color-background);
 }
-
-.card--middle {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 5rem;
-} */
 
 .card:hover {
     border-color: var(--color-surface);
