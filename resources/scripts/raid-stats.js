@@ -50,4 +50,59 @@ async function loadRaiderIO() {
     }
 }
 
+async function loadWarcraftLogs() {
+    const element = document.getElementById('fluke-warcraftlogs');
+
+    const WORKER_URL = 'https://warcraft-logs.flukegaming57.workers.dev';
+
+    try {
+        const res = await fetch(WORKER_URL);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const d = await res.json();
+        if (d.error) throw new Error(d.error);
+
+        const colorClass = (color) => `wcl-rank--${color}`;
+
+        element.innerHTML = `
+            <div class="card__stats">
+                <h4>Progress Ranking</h4>
+                <div class="grid grid--3">
+                    <p class="card__text">
+                        <span class="u-emphasis ${colorClass(d.progress.server?.color)}">#${d.progress.server?.number ?? '—'}</span>
+                        Realm
+                    </p>
+                    <p class="card__text">
+                        <span class="u-emphasis ${colorClass(d.progress.region?.color)}">#${d.progress.region?.number ?? '—'}</span>
+                        Region
+                    </p>
+                    <p class="card__text">
+                        <span class="u-emphasis ${colorClass(d.progress.world?.color)}">#${d.progress.world?.number ?? '—'}</span>
+                        World
+                    </p>
+                </div>
+            </div>
+            <div class="card__stats">
+                <h4>Speed Ranking</h4>
+                <div class="grid grid--2">
+                    <p class="card__text">
+                        <span class="u-emphasis ${colorClass(d.speed.server?.color)}">#${d.speed.server?.number ?? '—'}</span>
+                        Realm
+                    </p>
+                    <p class="card__text">
+                        <span class="u-emphasis ${colorClass(d.speed.world?.color)}">#${d.speed.world?.number ?? '—'}</span>
+                        World
+                    </p>
+                </div>
+            </div>
+            <p class="card__text--footnote">Data via Warcraft Logs</p>
+        `;
+
+    } catch (err) {
+        element.innerHTML = `<p class="card__text">Could not load Warcraft Logs data: ${err.message}</p>
+            <p class="card__text">Click this tile to visit WCL directly.</p>`;
+    }
+}
+
+loadWarcraftLogs();
+
 loadRaiderIO();
