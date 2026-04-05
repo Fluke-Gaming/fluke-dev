@@ -48,7 +48,7 @@
               Each season, we progress through normal and then heroic raid until we get AOTC.</p>
           </article>
 
-          <article class="card">
+          <article class="card is-remainder">
             <h3 class="card__title u-accent">PvP</h3>
             <p class="card__text">
               Most of our guild focuses on PvE content, but some players do battlegrounds and arenas.</p>
@@ -196,7 +196,7 @@
               We set our main spec for loot preference. Offspec rolls are fine; the game handles priority automatically.</p>
           </article>
 
-          <article class="card">
+          <article class="card is-remainder">
             <h3 class="card__title u-accent">Upgrade Focus</h3>
             <p class="card__text">
               We want everyone to get 4-set ASAP. Use need for upgrades you'll equip immediately, and greed for 'maybe' items.</p>
@@ -216,6 +216,11 @@
         <div class="grid grid--2">
           <!-- Signup -->
           <div class="card card--centered">
+            <article class="grid grid__hero--center">
+              <p class="card--centered">
+                Raiding every <span id="raidtime" class="u-accent"></span>. Submit here to add your character to the roster. Resubmit to make updates.</p>
+            </article>
+
             <form class="form" id="raidform">
               <input name="season" type="hidden" value="MNS1" required />
               <div class="grid grid--tight grid--2">
@@ -290,30 +295,19 @@
           </div>
 
           <div class="grid">
-            <article class="grid grid__hero--center">
-              <p class="card--centered">
-                Raiding every <span id="raidtime" class="u-accent"></span>. Submit here to add your character to the roster. Resubmit to make updates.</p>
+            <!-- Roster - Google Sheet -->
+            <article class="card card--centered card--dark is-link is-mouseover" role="link" tabindex="0"
+              data-href="https://docs.google.com/spreadsheets/d/1m5_nQY1-V4BOcTjD71qdwmV2lE-RGEUlPAz7vAzlQXo/edit?gid=0">
+              <h3 class="card__title u-accent">Signup Sheet</h3>
+              <p class="card__text">
+                Click to see current signups and raid roster.</p>
             </article>
-
-            <div class="grid grid--2">
-              <!-- Raider.IO -->
-              <article id="fluke-raiderio" class="grid card card--dark is-link is-mouseover" role="link" tabindex="0"
-                data-href="https://raider.io/guilds/us/frostmane/Fluke"></article>
-              <!-- Warcraft Logs -->
-              <article id="fluke-warcraftlogs" class="grid card card--dark is-link is-mouseover" role="link" tabindex="0"
-                data-href="https://www.warcraftlogs.com/guild/reports-list/570091"></article>
-            </div>
-
-            <div class="grid grid__hero--center">
-              <article class="card card--centered is-link is-mouseover" role="link" tabindex="0"
-                data-href="https://docs.google.com/spreadsheets/d/1m5_nQY1-V4BOcTjD71qdwmV2lE-RGEUlPAz7vAzlQXo/edit?gid=0"
-              >
-                <h3 class="card__title u-accent">Signup Sheet</h3>
-                <p class="card__text">
-                  View the current signups and raid roster.</p>
-              </article>
-            </div>
-
+            <!-- Raider.IO -->
+            <article id="fluke-raiderio" class="grid card card--centered card--dark is-link is-mouseover" role="link" tabindex="0"
+              data-href="https://raider.io/guilds/us/frostmane/Fluke"></article>
+            <!-- Warcraft Logs -->
+            <article id="fluke-warcraftlogs" class="grid card card--centered card--dark is-link is-mouseover" role="link" tabindex="0"
+              data-href="https://www.warcraftlogs.com/guild/reports-list/570091"></article>
           </div>
 
         </div>
@@ -330,35 +324,35 @@
         </header>
 
         <div class="grid grid--2">
-          <article class="card card--centered is-link is-mouseover" role="link" tabindex="0"
+          <article class="card card--gutter card--centered is-link is-mouseover" role="link" tabindex="0"
             data-href="https://www.mythictrap.com/en#bossStrategies"
           >
             <h4 class="card__title u-accent">Boss Guides</h4>
-            <p class="card__text--small">
+            <p class="card__text">
               Mythic Trap offers concise boss strategies with clear visuals for every encounter.</p>
           </article>
 
-          <article class="card card--centered is-link is-mouseover" role="link" tabindex="0"
+          <article class="card card--gutter card--centered is-link is-mouseover" role="link" tabindex="0"
             data-href="https://www.icy-veins.com/wow/class-guides"
           >
             <h4 class="card__title u-accent">Class Guides</h4>
-            <p class="card__text--small">
+            <p class="card__text">
               Icy Veins provides comprehensive class guides covering talents, rotations, and gear.</p>
           </article>
 
-          <article class="card card--centered is-link is-mouseover" role="link" tabindex="0"
+          <article class="card card--gutter card--centered is-link is-mouseover" role="link" tabindex="0"
             data-href="https://www.wowhead.com/guides/dungeons"
           >
             <h4 class="card__title u-accent">Dungeon Guides</h4>
-            <p class="card__text--small">
+            <p class="card__text">
               Wowhead features detailed dungeon guides with pull maps, interrupts, and video walkthroughs.</p>
           </article>
 
-          <article class="card card--centered is-link is-mouseover" role="link" tabindex="0"
+          <article class="card card--gutter card--centered is-link is-mouseover" role="link" tabindex="0"
             data-href="https://www.method.gg/guides#mythic-plus-guides"
           >
             <h4 class="card__title u-accent">Mythic+ Guides</h4>
-            <p class="card__text--small">
+            <p class="card__text">
               Method delivers precise Mythic+ guides covering affixes, timers, and optimized routes.</p>
           </article>
         </div>
