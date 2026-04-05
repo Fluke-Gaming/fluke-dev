@@ -50,7 +50,7 @@ async function loadRaiderIO() {
     }
 }
 
-async function loadWarcraftLogs() {
+async function loadWCLRankings() {
     const element = document.getElementById('fluke-warcraftlogs');
 
     const WORKER_URL = 'https://warcraft-logs.flukegaming57.workers.dev';
@@ -103,6 +103,50 @@ async function loadWarcraftLogs() {
     }
 }
 
-loadWarcraftLogs();
+async function loadWCLLastRaid() {
+    const element = document.getElementById('fluke-lastraid');
+
+    const WORKER_URL = 'https://warcraft-logs.flukegaming57.workers.dev/lastraid';
+
+    try {
+        const res = await fetch(WORKER_URL);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const d = await res.json();
+        if (d.error) throw new Error(d.error);
+
+        const bossPills = d.bosses.map(b => {
+            const killed  = b.kill;
+            const label   = killed
+                ? `✓ ${b.name}`
+                : b.bestPull !== null
+                    ? `✗ ${b.name} (${b.bestPull}%)`
+                    : `✗ ${b.name}`;
+            const cls = killed ? 'boss-pill--kill' : 'boss-pill--wipe';
+            return `<span class="boss-pill ${cls}">${label}</span>`;
+        }).join('');
+
+        element.innerHTML = `
+            <div class="card__stats">
+                <h4>Last raid · ${d.date}</h4>
+                <div class="grid grid--2">
+                    <p class="card__text"><span class="u-emphasis">${d.kills}/${d.total}</span> Heroic</p>
+                    <p class="card__text"><span class="u-emphasis">${d.duration}</span></p>
+                </div>
+            </div>
+            <div class="card__stats">
+                <div class="boss-pill-row">${bossPills}</div>
+            </div>
+            <p class="card__text--footnote">
+                Data via Warcraft Logs · 
+                <a href="${d.url}" target="_blank" rel="noopener">View all logs ↗</a>
+            </p>
+        `;
+
+    } catch (err) {
+        element.innerHTML = `<div class="error">Could not load raid data: ${err.message}</div>`;
+    }
+}
+
+loadWCLLastRaid();
 
 loadRaiderIO();
