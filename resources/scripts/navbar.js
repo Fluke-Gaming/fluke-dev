@@ -10,6 +10,7 @@ fetch('/navbar.html')
     const menu = navContainer.querySelector('.nav__menu');
     const links = navContainer.querySelectorAll('.nav__link');
     const submenu = navContainer.querySelector('.nav__submenu');
+    const submenufade = navContainer.querySelector('.nav__submenu-fade');
     const sublinks = navContainer.querySelectorAll('.nav__sublink');
 
     // ===== ACTIVE LINK =====
@@ -38,6 +39,26 @@ fetch('/navbar.html')
 
     if (submenu) {
       submenu.classList.toggle('nav__submenu--visible', showSubmenu);
+
+      // ===== SUBMENU SCROLL FADE =====
+      const submenuFade = navContainer.querySelector('.nav__submenu-fade');
+
+      if (showSubmenu && submenuFade) {
+        function updateSubmenuFade() {
+          const atEnd = submenu.scrollLeft + submenu.clientWidth >= submenu.scrollWidth - 4;
+          submenuFade.classList.toggle('is-hidden', atEnd);
+        }
+
+        submenu.addEventListener('scroll', updateSubmenuFade, { passive: true });
+        updateSubmenuFade();
+
+        window.addEventListener('scroll', () => {
+          const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+          const maxScroll = submenu.scrollWidth - submenu.clientWidth;
+          submenu.scrollLeft = scrollPct * maxScroll;
+          updateSubmenuFade();
+        }, { passive: true });
+      }
     }
 
     // ===== SUBMENU HOVER (non-WoW pages) =====

@@ -66,7 +66,7 @@
     gap: 1.5rem;
 }
 
-.nav__sublink + .nav__sublink::before {
+.nav__sublink+.nav__sublink::before {
     content: '';
     position: absolute;
     left: 0;
@@ -113,57 +113,57 @@
 /* ===== SUB MENU (DESKTOP) ===== */
 
 .nav__submenu {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  padding: 0 1.5rem;
-  height: 40px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0 1.5rem;
+    height: 40px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
 
 .nav__submenu::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .nav__submenu--visible {
-  display: flex;
+    display: flex;
 }
 
 .nav__sublink {
-  color: #7a8a80;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-decoration: none;
-  white-space: nowrap;
-  padding: 0 1rem;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  transition: color 0.15s ease;
+    color: #7a8a80;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0 1rem;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: color 0.15s ease;
 }
 
-.nav__sublink + .nav__sublink::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 14px;
-  width: 1px;
-  background: rgba(255, 255, 255, 0.08);
+.nav__sublink+.nav__sublink::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 14px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .nav__sublink:hover {
-  color: #f0fdf4;
+    color: #f0fdf4;
 }
 
 .nav__sublink.selected {
-  color: #f0fdf4;
+    color: #f0fdf4;
 }
 
 /* ===== TOGGLE (HIDDEN DESKTOP) ===== */
@@ -195,7 +195,6 @@
 
     .nav__container {
         min-height: 60px;
-        padding: 0 1rem;
         position: relative;
     }
 
@@ -266,5 +265,47 @@
         justify-content: flex-start;
         padding: 0.4rem 0;
         font-size: 0.9rem;
+    }
+
+    .nav__submenu--visible {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: nowrap;          /* single row */
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;      /* Firefox */
+        -ms-overflow-style: none;   /* IE/Edge */
+        padding: 0.5rem 1rem;
+        gap: 0;
+        scroll-behavior: smooth;
+    }
+
+    .nav__submenu--visible::-webkit-scrollbar {
+        display: none;              /* Chrome/Safari */
+    }
+
+    /* fade + chevron indicator */
+    .nav__submenu-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav__submenu-fade {
+        display: block;
+        position: absolute;
+        top: 0; right: 0; bottom: 0;
+        width: 3rem;
+        background: linear-gradient(to right, transparent, var(--nav-submenu-bg));
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .nav__submenu-fade.is-hidden {
+        opacity: 0;
+    }
+
+    .nav__sublink {
+        height: 36px;
+        padding: 0 0.75rem;
     }
 }
